@@ -119,3 +119,34 @@ Example : Online Shopping Service :
 
 ![Docker Architecture](https://github.com/balusena/docker-for-devops/blob/main/01-Docker%20Containers%20Introduction%20and%20Setup/container_layers.png)
 
+# Containers
+
+## 1.What is a container?
+
+A container is a standard unit of software that packages up code and all its dependencies so the application
+runs quickly and reliably from one computing environment to another.
+
+- A docker container image is s lightweight, standalone, executable package of software that includes 
+  everything needed to run an application: code, libraries, settings etc.
+
+- Container images become containers at runtime and in the case of docker containers images become 
+  containers when they run on docker engine.
+
+- Containers share the machine's OS system kernel and therefore do not require an OS per application.
+
+- Applications are safer in containers and Docker provides the strongest default isolation capabilities in 
+  the industry.
+
+- Docker container is the actual running piece created from a docker image. The only difference between a 
+  docker image and a docker container is a top writable layer. When you create a new container, you add a 
+  new, thin, writable layer on top of the underlying stack. This layer is often called the “container layer”
+  All changes made to the running container — such as writing new files, modifying existing files, and 
+  deleting files — are written to this thin writable container layer. But once you delete the container, 
+  this top layer will be deleted as well. So it’s not persistent. The best thing with docker is that you 
+  can create a docker image using the current docker container with a commit. Hence, enabling us to capture
+  system information and make it immutable so its reproducible anywhere. This solves many of the server 
+  related problems we encounter these days.
+
+![Docker Containe Image](https://github.com/balusena/docker-for-devops/blob/main/01-Docker%20Containers%20Introduction%20and%20Setup/docker_image.png)
+
+
