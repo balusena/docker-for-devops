@@ -44,7 +44,7 @@ Containerization.The Isolation provided by container gives a layer of security t
 ## 4.Docker Client
 - The Docker Client is what you, as the end-user of Docker, communicate with. Think of it as the UI for 
 
-## 5.Docker.Docker Daemon
+## 5.Docker Daemon
 - The Docker daemon is what actually executes commands sent to the Docker Client — like building, running, 
   and distributing your containers. The Docker Daemon runs on the host machine, but as a user, you never 
   communicate directly with the Daemon. The Docker Client can run on the host machine as well, but it’s not
