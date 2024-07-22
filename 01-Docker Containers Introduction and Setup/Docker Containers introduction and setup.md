@@ -150,3 +150,4 @@ runs quickly and reliably from one computing environment to another.
 ![Docker Containe Image](https://github.com/balusena/docker-for-devops/blob/main/01-Docker%20Containers%20Introduction%20and%20Setup/docker_image.png)
 
 
+
