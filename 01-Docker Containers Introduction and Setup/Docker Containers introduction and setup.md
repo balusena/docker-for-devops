@@ -9,7 +9,7 @@ In simple words, you can understand as containerization is a concept or technolo
 Containerization.The Isolation provided by container gives a layer of security to the containers.
 
 ### Docker Architecture
-![Docker Architecture](/docker-for-devops/01-Docker Containers Introdution and Setup/docker_architecture.jpg)
+![Docker Architecture](https://github.com/balusena/docker-for-devops/blob/main/01-Docker%20Containers%20Introduction%20and%20Setup/docker_architecture.png)
 
 ## 2.Why Docker?
 - 1.Simple 
