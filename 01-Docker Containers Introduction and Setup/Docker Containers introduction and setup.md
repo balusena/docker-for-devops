@@ -119,6 +119,29 @@ Example : Online Shopping Service :
 
 ![Docker Architecture](https://github.com/balusena/docker-for-devops/blob/main/01-Docker%20Containers%20Introduction%20and%20Setup/container_layers.png)
 
+## 10.Dockerfile
+
+Blueprint of a docker image (a text document) is known as Dockerfile. This file contains all the commands 
+you would run in order to build the docker image you want. Docker can build images reading this file, which
+is one of the key advantages of docker.
+```
+# Super simple example of a Dockerfile
+FROM ubuntu:latest
+MAINTAINER Tikam Alma 
+
+RUN apt-get update
+RUN apt-get install -y python python-pip wget
+RUN pip install Flask
+
+ADD hello.py /home/hello.py
+
+WORKDIR /home
+```
+We first write a Dockerfile which is like the definition of the image. Using the Dockerfile we create
+a docker image. We then push this image to Docker Hub and provide a unique tag that can be used to identify
+our image. Using this tag and image name, we can pull the docker image and deploy on another computer as a 
+docker container.
+
 # Containers
 
 ## 1.What is a container?
