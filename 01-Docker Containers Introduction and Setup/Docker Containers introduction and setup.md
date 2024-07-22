@@ -117,5 +117,5 @@ Example : Online Shopping Service :
      - environment variables
      - configuration files
 
-![Docker Architecture](01-Docker Containers introdution and setup/container_layers.png.jpg)
+![Docker Architecture](https://github.com/balusena/docker-for-devops/blob/main/01-Docker%20Containers%20Introduction%20and%20Setup/container_layers.png)
 
