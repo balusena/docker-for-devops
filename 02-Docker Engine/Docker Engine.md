@@ -36,3 +36,4 @@ containerd. It is responsible for managing the container's lifecycle and communi
 daemon.
 
 ![](https://github.com/balusena/docker-for-devops/blob/main/02-Docker%20Engine/containerd_shim.png)
+
