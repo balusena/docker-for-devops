@@ -37,4 +37,39 @@ daemon.
 
 ![](https://github.com/balusena/docker-for-devops/blob/main/02-Docker%20Engine/containerd_shim.png)
 
+### 5.Docker API : 
+The Docker API is a RESTful API that allows developers to interact with the Docker daemon. It provides a set
+of endpoints that can be used to perform actions such as creating, starting, and stopping containers. The 
+Docker API is used by the Docker client to communicate with the Docker daemon.
 
+### 6.Docker CLI : 
+The Docker CLI is a command-line tool that allows developers to interact with the Docker engine. It sends 
+requests to the Docker API to create, start, and manage containers.
+
+The Docker engine architecture is designed to be modular and flexible. It allows developers to swap out 
+components as needed to suit their specific requirements. For example, developers can replace the container
+runtime with a different runtime if they prefer.
+
+## Some Confusion may occur :
+
+- Difference between the working of Containerd and Runc .
+
+Here comes definitions of low-level runtimes and high-level runtime.
+
+Actual container runtimes that focus on just running containers are usually referred to as “low-level 
+container runtimes”. Low-level runtimes support using these operating system features(namespaces and cgroups).
+
+Runtimes that support more high-level features, like image management and gRPC/Web APIs, are usually referred
+to as “high-level container runtimes” or usually just “container runtimes”.
+
+Finally:
+
+Containerd is a (high-level) container runtime, as it manages images and roles as a centralized daemon for 
+container management.
+
+Runc is a low-level container runtime, as it directly uses namespace and cgroups to create containers.
+
+In conclusion, the Docker engine architecture is composed of several components that work together to 
+provide a powerful and efficient containerization platform. Understanding the architecture of the Docker
+engine is essential for developers who want to use Docker to build, deploy, and run containerized 
+applications.
