@@ -142,6 +142,46 @@ a docker image. We then push this image to Docker Hub and provide a unique tag t
 our image. Using this tag and image name, we can pull the docker image and deploy on another computer as a 
 docker container.
 
+## 11.Docker Environment?
+The Docker environment refers to the overall setup and infrastructure necessary for running Docker
+containers and managing containerized applications.
+
+It includes the following components:
+
+### 1.Docker Engine:
+- The core component of the Docker environment, responsible for running and managing containers. It consists
+  of the Docker daemon, Docker CLI, and Docker API.
+
+### 2.Docker Images:
+- Docker images are the building blocks of containers. They contain the application code, dependencies, and
+  configurations needed to run an application within a container.
+
+### 3.Docker Containers:
+- Containers are lightweight and isolated runtime instances created from Docker images. They encapsulate the
+  application and its dependencies, providing a consistent and reproducible execution environment.
+
+### 4.Dockerfile:
+- A Dockerfile is a text file that specifies the instructions to build a Docker image. It includes commands
+  to install dependencies, configure the environment, and define how the container should be run.
+
+### 5.Docker Compose:
+- Docker Compose is a tool for defining and managing multi-container applications. It uses YAML files to
+  specify the services, networks, and volumes required for an application. Docker Compose simplifies the
+  process of running and orchestrating multiple containers as a cohesive unit.
+
+### 6.Docker Registry:
+- A Docker Registry is a repository for storing and distributing Docker images. Docker Hub is the default
+  public registry, but you can also set up private registries to store custom images within your organization.
+
+### 7.Docker Networking:
+- Docker provides networking capabilities to enable communication between containers and external networks.
+  It allows containers to be connected to networks, assign IP addresses, and define network aliases for easy
+  communication.
+
+### 8.Docker Volumes:
+- Docker volumes provide a way to persist data beyond the lifecycle of a container. Volumes can be attached
+  to containers, allowing data to be shared between containers or stored outside the container's filesystem.
+
 # Containers
 
 ## 1.What is a container?
@@ -185,7 +225,7 @@ runs quickly and reliably from one computing environment to another.
   include it’s own guest operating system. This increased the size of the virtual machines significantly, 
   makes setting up virtual machines more complex and requires more resources to run each virtual machine.
 
-![Docker Container Image](https://github.com/balusena/docker-for-devops/blob/main/01-Docker%20Containers%20Introduction%20and%20Setup/container_vs_vm.png)
+![Container vs Virtual Machine](https://github.com/balusena/docker-for-devops/blob/main/01-Docker%20Containers%20Introduction%20and%20Setup/container_vs_vm.png)
 
 Containers and virtual machines are both technologies used to isolate applications and their dependencies, 
 but they have some key differences:
@@ -203,7 +243,7 @@ but they have some key differences:
 4. Management: Managing containers is typically easier than managing VMs, as containers are designed to be
    lightweight and fast-moving.
 
-![Docker Container Image](https://github.com/balusena/docker-for-devops/blob/main/01-Docker%20Containers%20Introduction%20and%20Setup/dockervsvm.png)
+![Docker Container vs VM](https://github.com/balusena/docker-for-devops/blob/main/01-Docker%20Containers%20Introduction%20and%20Setup/dockervsvm.png)
 
 ### Why are containers light weight ?
 Containers are lightweight because they use a technology called containerization, which allows them to 
@@ -218,7 +258,7 @@ Below is the screenshot of official ubuntu base image which you can use for your
 It's just ~ 22 MB, isn't it very small ? on a contrary if you look at official ubuntu VM image 
 it will be close to ~ 2.3 GB. So the container base image is almost 100 times less than VM image.
 
-![Docker Container Image](https://github.com/balusena/docker-for-devops/blob/main/01-Docker%20Containers%20Introduction%20and%20Setup/ubuntu_img_lw.png)
+![Ubuntu Image Light Weight](https://github.com/balusena/docker-for-devops/blob/main/01-Docker%20Containers%20Introduction%20and%20Setup/ubuntu_img_lw.png)
 
 To provide a better picture of files and folders that containers base images have and files and folders 
 that containers use from host operating system (not 100 percent accurate -> varies from base image to base
