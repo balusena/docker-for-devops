@@ -53,21 +53,22 @@ runtime with a different runtime if they prefer.
 ## Some Confusion may occur :
 
 ### Difference between the working of Containerd and Runc .
+Here comes definitions of low-level runtimes and high-level runtime.
 
-- Here comes definitions of low-level runtimes and high-level runtime.
-
+### Low-Level Runtime:
 Actual container runtimes that focus on just running containers are usually referred to as “low-level 
 container runtimes”. Low-level runtimes support using these operating system features(namespaces and cgroups).
 
+### High-Level Runtime:
 Runtimes that support more high-level features, like image management and gRPC/Web APIs, are usually referred
 to as “high-level container runtimes” or usually just “container runtimes”.
 
 Finally:
 
-Containerd is a (high-level) container runtime, as it manages images and roles as a centralized daemon for 
-container management.
+- Containerd is a (high-level) container runtime, as it manages images and roles as a centralized daemon for 
+  container management.
 
-Runc is a low-level container runtime, as it directly uses namespace and cgroups to create containers.
+- Runc is a low-level container runtime, as it directly uses namespace and cgroups to create containers.
 
 In conclusion, the Docker engine architecture is composed of several components that work together to 
 provide a powerful and efficient containerization platform. Understanding the architecture of the Docker
