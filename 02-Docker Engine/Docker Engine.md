@@ -10,3 +10,4 @@ The Docker engine is made up of several components, including:
 
 ## Docker Engine Architecture:
 ![Docker Engine Architecture](https://github.com/balusena/docker-for-devops/blob/main/02-Docker%20Engine/docker_engine.png)
+
