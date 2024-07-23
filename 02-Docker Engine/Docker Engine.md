@@ -34,4 +34,5 @@ Runc is a cli tool for spawning and running containers according to OCI specific
 The Containerd-shim is a lightweight process that acts as an intermediary between the Docker daemon and 
 containerd. It is responsible for managing the container's lifecycle and communicating with the Docker 
 daemon.
+
 ![](https://github.com/balusena/docker-for-devops/blob/main/02-Docker%20Engine/containerd_shim.png)
