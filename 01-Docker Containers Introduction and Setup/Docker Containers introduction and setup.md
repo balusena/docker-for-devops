@@ -270,3 +270,69 @@ service. VMs, on the other hand, emulate an entire operating system, including a
 and system files, resulting in a much larger size.
 
 I hope it is now very clear why containers are light weight in nature.
+
+## Working of Containers Deep-Dive
+The term “container” is really just an abstract concept to describe how a few different features work 
+together to visualize a “container”. Let’s run through them real quick:
+
+### 1.Namespaces
+Namespaces provide containers with their own view of the underlying Linux system, limiting what the container
+can see and access. When you run a container, Docker creates namespaces that the specific container will use. There are several different types of namespaces in a kernel that Docker makes use of, for example:
+
+### 2.NET
+Provides a container with its own view of the network stack of the system (e.g., its own network devices, IP
+addresses, IP routing tables, /proc/net directory, port numbers, etc.).
+
+### 3.PID
+PID stands for Process ID. If you’ve ever run ps aux in the command line to check what processes are running
+on your system, you’ll have seen a column named “PID”. The PID namespace gives containers their own scoped 
+view of processes they can view and interact with, including an independent init (PID 1), which is the 
+“ancestor of all processes”.
+
+### 4.MNT
+Gives a container its own view of the “mounts” on the system. So, processes in different mount namespaces 
+have different views of the filesystem hierarchy.
+
+### 5.UTS
+UTS stands for UNIX Timesharing System. It allows a process to identify system identifiers (i.e., hostname, 
+domain name, etc.). UTS allows containers to have their own hostname and NIS domain name that is independent
+of other containers and the host system.
+
+### 6.IPC
+IPC stands for InterProcess Communication. IPC namespace is responsible for isolating IPC resources between
+processes running inside each container.
+
+### 7.USER
+This namespace is used to isolate users within each container. It functions by allowing containers to have a
+different view of the uid (user ID) and gid (group ID) ranges, as compared with the host system. As a 
+result, a process’s uid and gid can be different inside and outside a user namespace, which also allows a 
+process to have an unprivileged user outside a container without sacrificing root privilege inside a 
+container.
+
+### 8.Control Groups
+Control groups (also called cgroups) are a Linux kernel feature that isolates, prioritizes, and accounts for
+the resource usage (CPU, memory, disk I/O, network, etc.) of a set of processes. In this sense, a cgroup 
+ensures that Docker containers only use the resources they need — and, if needed, set up limits to what 
+resources a container can use. Cgroups also ensure that a single container doesn’t exhaust one of those 
+resources and bring the entire system down.
+
+### 9.Isolated Union File System
+Docker uses Union File Systems to build up an image. You can think of a Union File System as a stackable file
+system, meaning files and directories of separate file systems (known as branches) can be transparently 
+overlaid to form a single file system.
+
+The contents of directories which have the same path within the overlaid branches are seen as a single merged
+directory, which avoids the need to create separate copies of each layer. Instead, they can all be given 
+pointers to the same resource; when certain layers need to be modified, it’ll create a copy and modify a 
+local copy, leaving the original unchanged. That’s how file systems can appear writable without actually 
+allowing writes. (In other words, a “copy-on-write” system.)
+
+Layered systems offer two main benefits:
+
+- 1.Duplication-Free
+    Layers help avoid duplicating a complete set of files every time you use an image to create and run a 
+    new container, making instantiation of Docker containers very fast and cheap.
+
+- 2.Layer Segregation
+    Making a change is much faster — when you change an image, Docker only propagates the updates to the 
+    layer that was changed.
