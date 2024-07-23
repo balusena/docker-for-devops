@@ -52,9 +52,9 @@ runtime with a different runtime if they prefer.
 
 ## Some Confusion may occur :
 
-- Difference between the working of Containerd and Runc .
+### Difference between the working of Containerd and Runc .
 
-Here comes definitions of low-level runtimes and high-level runtime.
+- Here comes definitions of low-level runtimes and high-level runtime.
 
 Actual container runtimes that focus on just running containers are usually referred to as “low-level 
 container runtimes”. Low-level runtimes support using these operating system features(namespaces and cgroups).
