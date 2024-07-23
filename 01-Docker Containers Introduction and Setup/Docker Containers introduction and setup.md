@@ -518,7 +518,7 @@ hello-world                        latest    feb5d9fea6a5   16 months ago    13.
 
 ### 10.Run your First Docker Container
 ```
-docker run -it abhishekf5/my-first-docker-image
+docker run -it balusena21/my-first-docker-image
 ```
 Output:
 ```
@@ -526,12 +526,12 @@ Hello World
 ```
 ### 11.Push the Image to DockerHub and share it with the world
 ```
-docker push abhishekf5/my-first-docker-image
+docker push balusena21/my-first-docker-image
 ```
 Output:
 ```
 Using default tag: latest
-The push refers to repository [docker.io/BALUSENA21/my-first-docker-image]
+The push refers to repository [docker.io/balusena2121/my-first-docker-image]
 896818320e80: Pushed
 b8088c305a52: Pushed
 69dd4ccec1a0: Pushed
