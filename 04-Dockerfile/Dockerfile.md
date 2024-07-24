@@ -232,8 +232,8 @@ Removing intermediate container 8d7e5b9c6f8a
 Successfully built 8e7c5b9d8f2a
 Successfully tagged my-flask-app:1.0
 ```
--t my-flask-app:1.0 tags the image with the name my-flask-app and version 1.0.
-. specifies the build context as the current directory.
+- -t my-flask-app:1.0 tags the image with the name my-flask-app and version 1.0.
+- . specifies the build context as the current directory.
 
 ### 2. Run the Docker Container
 Once the image is built, you can run a container from it. Use the following command:
@@ -241,10 +241,10 @@ Once the image is built, you can run a container from it. Use the following comm
 ubuntu@balasenapathi:~$ docker run -d -p 5000:5000 --name my-flask-app-container my-flask-app:1.0
 5f8d6e5b9c8f6d8e7f8b6c5d8a9e7c6b9d8e5f8a6b7c
 ```
--d runs the container in detached mode (in the background).
--p 5000:5000 maps port 5000 on your host machine to port 5000 in the container. This allows you to access the application on your host machine through this port.
---name my-flask-app-container assigns a name to the container for easier management.
-my-flask-app:1.0 is the name and tag of the image you built.
+- -d runs the container in detached mode (in the background).
+- -p 5000:5000 maps port 5000 on your host machine to port 5000 in the container. This allows you to access the application on your host machine through this port.
+- --name my-flask-app-container assigns a name to the container for easier management.
+- my-flask-app:1.0 is the name and tag of the image you built.
 
 ### 3. Access the Application
 With the container running, you can access the Flask application through a web browser or a tool like curl 
