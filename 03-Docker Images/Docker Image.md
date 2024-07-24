@@ -311,68 +311,83 @@ layered filesystems stacked on top of each other.
 ### 1.Pulling
 ```
 Pull an image from a registry:
+
 $ docker pull ubuntu:latest
 ```
 ```
 Pull a specific version of an image:
+
 $ docker pull nginx:1.19.10
 ```
 ### 2.Building
 ```
 Build an image from a Dockerfile in the current directory:
+
 $ docker build -t myimage:tag .
 ```
 ```
 Build an image with a specific Dockerfile:
+
 $ docker build -t myimage:tag -f Dockerfile.dev .
 ```
 ### 3.Listing
 ```
 List all available images on your local machine:
+
 $ docker images
 ```
 ```
 List images with a specific repository and tag:
+
 $ docker images myrepository/myimage:tag
 ```
 #4.Running
 ```
 Run a container based on an image in the background:
+
 docker run -d -p 8080:80 nginx:latest
 ```
 ```
 Run a container interactively and attach to it:
+
 docker run -it ubuntu:latest bash
 ```
 ### 5.Inspecting
 ```
 Inspect detailed information about an image:
+
 $ docker image inspect ubuntu:latest
 ```
 ### 6.Tagging
 ```
 Tag an image with a new repository and tag:
+
 $ docker tag myimage:tag myrepository/myimage:tag
 ```
 ### 7.Managing
 ```
 Remove an image from your local machine:
+
 $ docker rmi myimage:tag
 ```
 ```
 Remove multiple images at once:
+
 $ docker rmi image1:tag image2:tag
 ```
 ```
 Remove all unused images:
+
 $ docker image prune
 ```
 ```
 Save an image to a tar archive:
+
 $ docker save -o myimage.tar myimage:tag
 ```
 ```
 Load an image from a tar archive:
+
 $ docker load -i myimage.tar
 ```
 These commands will help us effectively work with Docker images in various scenarios, both in development and
