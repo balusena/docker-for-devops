@@ -232,8 +232,8 @@ Removing intermediate container 8d7e5b9c6f8a
 Successfully built 8e7c5b9d8f2a
 Successfully tagged my-flask-app:1.0
 ```
--t my-flask-app:1.0 tags the image with the name my-flask-app and version 1.0
-. specifies the build context as the current directory
+-t my-flask-app:1.0 tags the image with the name my-flask-app and version 1.0.
+. specifies the build context as the current directory.
 
 ### 2. Run the Docker Container
 Once the image is built, you can run a container from it. Use the following command:
