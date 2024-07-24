@@ -28,11 +28,19 @@ Docker Hub or your local registry.
 
 Let’s take the example of building a docker file in three states.
 
-- Running DockerFile first time for building docker image:
+### 1.Running DockerFile first time for building docker image:
 
-During a new build, all of these file structures have to be created and written to disk — this is where 
+During a new build, all of these file structures have to be created and written to disk, this is where 
 Docker stores base images.
 
 ![Running DockerFile first time for building docker image](https://github.com/balusena/docker-for-devops/blob/main/03-Docker%20Images/df1.png)
+
+### 2.Running DockerFile second time for building docker image:
+
+- When we build the same dockerfile a second time, it will reuse the cache of a previous build on the host 
+  to reduce the build time.
+- None of those file structures have to be created and written to disk at this time.
+
+![Running DockerFile second time for building docker image](https://github.com/balusena/docker-for-devops/blob/main/03-Docker%20Images/df2.png)
 
 
