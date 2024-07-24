@@ -163,7 +163,220 @@ exit
 ===> docker run is used to create and start a container based on a specified image.  [$ docker run -it ubuntu:latest]
 ===> docker exec is used to execute a command within a running container.            [$ docker exec -it f830a3324f7d bash]
 ```
+### 9.To delete docker images:-
+```
+docker rmi <IMAGE ID>    -----> get IMAGE ID by using > docker images
 
+ubuntu@balasenapathi:~$ docker rmi 3b418d7b466a
+Error response from daemon: conflict: unable to delete 3b418d7b466a (cannot be forced) - image is being used by running container
+f830a3324f7d
+```
+Note:- If any image was used by docker container then we need to stop that container to delete that image 
+else we get an error, or we can use -f to remove the image forecfully.
+
+### This image was used by two containers ids f830a3324f7d, e47579e053e6 created from image id 3b418d7b466a
+```
+ubuntu@balasenapathi:~$ docker ps -a
+CONTAINER ID   IMAGE         COMMAND       CREATED          STATUS                  PORTS     NAMES
+e47579e053e6   ubuntu        "/bin/bash"   28 minutes ago   Up 28 minutes                     MyUbuntu
+f830a3324f7d   ubuntu        "/bin/bash"   30 minutes ago   Up 30 minutes                     laughing_kare
+bc83ae06143b   hello-world   "/hello"      5 days ago       Exited (0) 5 days ago             friendly_colden
+
+ubuntu@balasenapathi:~$ docker rmi -f 3b418d7b466a
+Error response from daemon: conflict: unable to delete 3b418d7b466a (cannot be forced) - image is being used by running container
+f830a3324f7d
+```
+### To resolve this issue stop the running container
+```
+ubuntu@balasenapathi:~$ docker stop f830a3324f7d
+f830a3324f7d
+
+ubuntu@balasenapathi:~$ docker rmi -f 3b418d7b466a
+Error response from daemon: conflict: unable to delete 3b418d7b466a (cannot be forced) - image is being used by running container
+e47579e053e6
+
+ubuntu@balasenapathi:~$ docker stop e47579e053e6
+e47579e053e6
+
+ubuntu@balasenapathi:~$ docker rmi -f 3b418d7b466a
+Untagged: ubuntu:latest
+Untagged: ubuntu@sha256:dfd64a3b4296d8c9b62aa3309984f8620b98d87e47492599ee20739e8eb54fbf
+Deleted: sha256:3b418d7b466ac6275a6bfcb0c86fbe4422ff6ea0af444a294f82d3bf5173ce74
+```
+### 10.To inspect docker image
+```
+docker inspect <image_name|ID>
+
+ubuntu@balasenapathi:~$ docker inspect 9c7a54a9a43c
+or
+ubuntu@balasenapathi:~$ docker inspect hello-world
+[
+{
+"Id": "sha256:9c7a54a9a43cca047013b82af109fe963fde787f63f9e016fdc3384500c2823d",
+"RepoTags": [
+"hello-world:latest"
+],
+"RepoDigests": [
+"hello-world@sha256:fc6cf906cbfa013e80938cdf0bb199fbdbb86d6e3e013783e5a766f50f5dbce0"
+],
+"Parent": "",
+"Comment": "",
+"Created": "2023-05-04T17:37:03.872958712Z",
+"Container": "347ca68872ee924c4f9394b195dcadaf591d387a45d624225251efc6cb7a348e",
+"ContainerConfig": {
+"Hostname": "347ca68872ee",
+"Domainname": "",
+"User": "",
+"AttachStdin": false,
+"AttachStdout": false,
+"AttachStderr": false,
+"Tty": false,
+"OpenStdin": false,
+"StdinOnce": false,
+"Env": [
+"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+],
+"Cmd": [
+"/bin/sh",
+"-c",
+"#(nop) ",
+"CMD [\"/hello\"]"
+],
+"Image": "sha256:62a15619037f3c4fb4e6ba9bd224cba3540e393a55dc52f6bebe212ca7b5e1a7",
+"Volumes": null,
+"WorkingDir": "",
+"Entrypoint": null,
+"OnBuild": null,
+"Labels": {}
+},
+"DockerVersion": "20.10.23",
+"Author": "",
+"Config": {
+"Hostname": "",
+"Domainname": "",
+"User": "",
+"AttachStdin": false,
+"AttachStdout": false,
+"AttachStderr": false,
+"Tty": false,
+"OpenStdin": false,
+"StdinOnce": false,
+"Env": [
+"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+],
+"Cmd": [
+"/hello"
+],
+"Image": "sha256:62a15619037f3c4fb4e6ba9bd224cba3540e393a55dc52f6bebe212ca7b5e1a7",
+"Volumes": null,
+"WorkingDir": "",
+"Entrypoint": null,
+"OnBuild": null,
+"Labels": null
+},
+"Architecture": "amd64",
+"Os": "linux",
+"Size": 13256,
+"VirtualSize": 13256,
+"GraphDriver": {
+"Data": {
+"MergedDir": "/var/snap/docker/common/var-lib-docker/
+overlay2/756079e8163496cd40f9f9ad27e4c0ab18548c303b3f2aad321fbe35701c7c65/merged",
+"UpperDir": "/var/snap/docker/common/var-lib-docker/
+overlay2/756079e8163496cd40f9f9ad27e4c0ab18548c303b3f2aad321fbe35701c7c65/diff",
+"WorkDir": "/var/snap/docker/common/var-lib-docker/
+overlay2/756079e8163496cd40f9f9ad27e4c0ab18548c303b3f2aad321fbe35701c7c65/work"
+},
+"Name": "overlay2"
+},
+"RootFS": {
+"Type": "layers",
+"Layers": [
+"sha256:01bb4fce3eb1b56b05adf99504dafd31907a5aadac736e36b27595c8b92f07f1"
+]
+},
+"Metadata": {
+"LastTagTime": "0001-01-01T00:00:00Z"
+}
+}
+]
+```
+- Note:
+We will get all the detailed information about the inspected image. An image typically contains a union of 
+layered filesystems stacked on top of each other.
+
+## Essential operations associated with Docker Images for effective operations in both development and 
+   production environments.They are:
+
+### 1.Pulling
+```
+Pull an image from a registry:
+$ docker pull ubuntu:latest
+```
+```
+Pull a specific version of an image:
+$ docker pull nginx:1.19.10
+```
+### 2.Building
+```
+Build an image from a Dockerfile in the current directory:
+$ docker build -t myimage:tag .
+```
+```
+Build an image with a specific Dockerfile:
+$ docker build -t myimage:tag -f Dockerfile.dev .
+```
+### 3.Listing
+```
+List all available images on your local machine:
+$ docker images
+```
+```
+List images with a specific repository and tag:
+$ docker images myrepository/myimage:tag
+```
+#4.Running
+```
+Run a container based on an image in the background:
+docker run -d -p 8080:80 nginx:latest
+```
+```
+Run a container interactively and attach to it:
+docker run -it ubuntu:latest bash
+```
+### 5.Inspecting
+```
+Inspect detailed information about an image:
+$ docker image inspect ubuntu:latest
+```
+### 6.Tagging
+```
+Tag an image with a new repository and tag:
+$ docker tag myimage:tag myrepository/myimage:tag
+```
+### 7.Managing
+```
+Remove an image from your local machine:
+$ docker rmi myimage:tag
+```
+```
+Remove multiple images at once:
+$ docker rmi image1:tag image2:tag
+```
+```
+Remove all unused images:
+$ docker image prune
+```
+```
+Save an image to a tar archive:
+$ docker save -o myimage.tar myimage:tag
+```
+```
+Load an image from a tar archive:
+$ docker load -i myimage.tar
+```
+These commands will help us effectively work with Docker images in various scenarios, both in development and
+production environments.
 
 
 
