@@ -30,3 +30,4 @@ Let’s take the example of building a docker file in three states.
 
 ![Running DockerFile First time while building Docker Image](https://github.com/balusena/docker-for-devops/blob/main/03-Docker%20Images/df1.png)
 
+
