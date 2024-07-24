@@ -117,3 +117,19 @@ ENTRYPOINT ["python", "app.py"]
 ```
 LABEL build_version=$APP_VERSION
 ```
+## Benefits of using a Dockerfile
+- 1.Faster Deployments:
+Dockerfiles enable faster and more efficient deployment of applications. Once a Docker image has been built, 
+it can be easily deployed to any environment that supports Docker.
+
+- 2.Automation Testing:
+Dockerfiles can be used in automation testing to build and run test environments for different applications 
+and services. Using a Dockerfile, you can create an image of a specific test environment that can be easily and consistently recreated, without needing to manually set up and configure the environment on each test run.
+
+- 3.Quick CI/CD Integration: 
+You can easily integrate your Dockerfile with a continuous integration and continuous deployment (CI/CD) 
+pipeline, which enables you to automatically build, test and deploy your application with every code change.
+This helps to reduce the risk of errors and ensures that your application is always up-to-date.
+
+## Dockerfile
+
