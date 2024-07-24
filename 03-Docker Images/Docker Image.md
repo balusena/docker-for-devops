@@ -51,3 +51,10 @@ Docker stores base images.
 - e.g — docker build — no-cache -t nginx1 .
 ```
 ![Running DockerFile with no-cache option ](https://github.com/balusena/docker-for-devops/blob/main/03-Docker%20Images/df3.png)
+
+## Docker image Size
+- When you execute docker image ls or docker images, the column size is the size of the docker image.
+- It is also not necessary that it will be the size of the current image but it may be the size of the 
+  current image + all these parent images.
+
+![Docker Image Size](https://github.com/balusena/docker-for-devops/blob/main/03-Docker%20Images/docker_image_size.png)
