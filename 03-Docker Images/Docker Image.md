@@ -43,4 +43,11 @@ Docker stores base images.
 
 ![Running DockerFile second time for building docker image](https://github.com/balusena/docker-for-devops/blob/main/03-Docker%20Images/df2.png)
 
-
+### 3.Running DockerFile with no-cache option:
+- However, that cache may cause issues sometimes.
+- To solve this issue, we need to invalidate the cache on the docker host.
+- Docker build with the “— no-cache” option, which completely ignores all cache and thus makes every build take as much time as the first.
+```
+- e.g — docker build — no-cache -t nginx1 .
+```
+![Running DockerFile with no-cache option ](https://github.com/balusena/docker-for-devops/blob/main/03-Docker%20Images/df3.png)
