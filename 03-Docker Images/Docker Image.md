@@ -52,9 +52,16 @@ Docker stores base images.
 ```
 ![Running DockerFile with no-cache option ](https://github.com/balusena/docker-for-devops/blob/main/03-Docker%20Images/df3.png)
 
-## Docker image Size
+## Docker Image Size
 - When you execute docker image ls or docker images, the column size is the size of the docker image.
 - It is also not necessary that it will be the size of the current image but it may be the size of the 
   current image + all these parent images.
 
 ![Docker Image Size](https://github.com/balusena/docker-for-devops/blob/main/03-Docker%20Images/docker_image_size.png)
+
+## An Example of a docker image
+- Here is a MySQL image that has been downloaded from Docker Hub.
+- A Docker image is made up of multiple layers. The MySQL image above consists of a series of layers such as
+  07aded7c29c6, f68b8cbd22de, etc, and others.
+
+![Docker Image Example](https://github.com/balusena/docker-for-devops/blob/main/03-Docker%20Images/docker_image.png)
