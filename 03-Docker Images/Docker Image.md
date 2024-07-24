@@ -171,7 +171,8 @@ ubuntu@balasenapathi:~$ docker rmi 3b418d7b466a
 Error response from daemon: conflict: unable to delete 3b418d7b466a (cannot be forced) - image is being used by running container
 f830a3324f7d
 ```
-Note:- If any image was used by docker container then we need to stop that container to delete that image 
+- Note: 
+If any image was used by docker container then we need to stop that container to delete that image 
 else we get an error, or we can use -f to remove the image forecfully.
 
 ### This image was used by two containers ids f830a3324f7d, e47579e053e6 created from image id 3b418d7b466a
