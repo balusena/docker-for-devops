@@ -73,3 +73,109 @@ Docker stores base images.
 - Image ID (2fe463762680) — It is a unique image identity.
 - Created (4 days ago) — It is the period of time since it was created.
 - Size (514MB) — It is the image’s virtual size.
+
+## Docker Image basics command
+
+### 1.To get the list of all images in our system:-
+```
+ubuntu@balasenapathi:~$ docker images
+REPOSITORY    TAG       IMAGE ID       CREATED       SIZE
+hello-world   latest    9c7a54a9a43c   3 weeks ago   13.3kB
+```
+### 2.To pull an image from dockerhub registry or repository:-
+```
+ubuntu@balasenapathi:~$ docker pull ubuntu
+Using default tag: latest
+latest: Pulling from library/ubuntu
+dbf6a9befcde: Pull complete
+Digest: sha256:dfd64a3b4296d8c9b62aa3309984f8620b98d87e47492599ee20739e8eb54fbf
+Status: Downloaded newer image for ubuntu:latest
+docker.io/library/ubuntu:latest
+```
+### 3.To use docker images help
+```
+ubuntu@balasenapathi:~$ docker images --help
+Usage:  docker images [OPTIONS] [REPOSITORY[:TAG]]
+
+List images
+
+Options:
+-a, --all             Show all images (default hides intermediate images)
+--digests         Show digests
+-f, --filter filter   Filter output based on conditions provided
+--format string   Pretty-print images using a Go template
+--no-trunc        Don't truncate output
+-q, --quiet           Only show image IDs
+```
+```
+ubuntu@balasenapathi:~$ docker images
+REPOSITORY    TAG       IMAGE ID       CREATED       SIZE
+hello-world   latest    9c7a54a9a43c   3 weeks ago   13.3kB
+ubuntu        latest    3b418d7b466a   5 weeks ago   77.8MB
+```
+### 4.To get only image ids
+```
+ubuntu@balasenapathi:~$ docker images -q
+9c7a54a9a43c
+3b418d7b466a
+```
+### 5.To filter an image based on condition
+```
+Note:- A dangling image is one that is not tagged and is not referenced/associated by any container.
+-f ------> filter option
+
+ubuntu@balasenapathi:~$ docker images -f "dangling=false"
+REPOSITORY    TAG       IMAGE ID       CREATED       SIZE
+hello-world   latest    9c7a54a9a43c   3 weeks ago   13.3kB
+ubuntu        latest    3b418d7b466a   5 weeks ago   77.8MB
+
+ubuntu@balasenapathi:~$ docker images -f "dangling=true"
+REPOSITORY   TAG       IMAGE ID   CREATED   SIZE
+
+ubuntu@balasenapathi:~$ docker images -f "dangling=false" -q
+9c7a54a9a43c
+3b418d7b466a
+```
+### 6.To create a docker container from a docker image
+```
+ubuntu@balasenapathi:~$ docker run -it -d ubuntu
+f830a3324f7d379dcfa9fb8b1ae03c4fa1fa2f178520d3811ab3911fffeacf6b
+a92629e82e88
+e47579e053e6
+```
+### 7.To provide name to the container
+```
+ubuntu@balasenapathi:~$ docker run --name MyUbuntu -it -d ubuntu
+e47579e053e6f49da44c9dc2e85ac5c3ca7ae99183a8fd879c7bcac44db579fc
+```
+### 8.To access a running docker container:-
+```
+ubuntu@balasenapathi:~$ docker exec -it f830a3324f7d bash
+root@f830a3324f7d:/# pwd
+/
+root@f830a3324f7d:/# ls
+bin  boot  dev  etc  home  lib  lib32  lib64  libx32  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+
+root@f830a3324f7d:/# exit
+exit
+
+===> docker pull is used to download an image from a registry to your local machine. [$ docker pull ubuntu:latest]
+===> docker run is used to create and start a container based on a specified image.  [$ docker run -it ubuntu:latest]
+===> docker exec is used to execute a command within a running container.            [$ docker exec -it f830a3324f7d bash]
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
