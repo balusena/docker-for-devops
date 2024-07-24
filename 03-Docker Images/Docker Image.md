@@ -28,6 +28,6 @@ Docker Hub or your local registry.
 
 Let’s take the example of building a docker file in three states.
 
-![Running DockerFile](https://github.com/balusena/docker-for-devops/blob/main/03-Docker%20Images/df1.png)
+![Running DockerFile for first time for building docker image](https://github.com/balusena/docker-for-devops/blob/main/03-Docker%20Images/df1.png)
 
 
