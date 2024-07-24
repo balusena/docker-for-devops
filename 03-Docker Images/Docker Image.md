@@ -9,6 +9,7 @@ have multiple layers,each one originates from the previous layer but is differen
 
 Note: Docker images are read-only templates used to create containers, built by Docker users, and stored in
 Docker Hub or your local registry.
+
 ![Docker Image Layer](https://github.com/balusena/docker-for-devops/blob/main/03-Docker%20Images/container_layers.png)
 
 - An image consists of a collection of files (or layers) that pack together all the necessities — such as 
@@ -65,3 +66,10 @@ Docker stores base images.
   07aded7c29c6, f68b8cbd22de, etc, and others.
 
 ![Docker Image Example](https://github.com/balusena/docker-for-devops/blob/main/03-Docker%20Images/docker_image.png)
+
+![Docker Image Example](https://github.com/balusena/docker-for-devops/blob/main/03-Docker%20Images/doc_image.png)
+
+- Tag (latest) —It identifies the image by its tag, such as version number.
+- Image ID (2fe463762680) — It is a unique image identity.
+- Created (4 days ago) — It is the period of time since it was created.
+- Size (514MB) — It is the image’s virtual size.
