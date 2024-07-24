@@ -452,7 +452,7 @@ This message shows that your installation appears to be working correctly.
 ### 6.Clone this repository and move to example folder
 ```
 git clone https://github.com/balusena/docker-for-devops.git
-cd  examples
+cd  01-Docker Containers Introduction and Setup/examples
 ```
 
 ### 7.Login to Docker [Create an account with https://hub.docker.com/]
