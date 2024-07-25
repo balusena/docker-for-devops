@@ -89,7 +89,39 @@ uploaded to use for their development project or to run as a container.
 
 ![The Role of Docker Registry In Image Storage](https://github.com/balusena/docker-for-devops/blob/main/06-Docker%20Registry/the_role_of_docker_registry_in_image_storage.png)
 
+### 4.What Types of Docker Registries Are Out There?
+The term “Docker registry” can sometimes be a bit confusing as it can be used to indicate two different 
+(but also similar) things with the same purpose. If you noticed, up till now we’ve written Docker registry
+with a lowercase “r.” This is because we used the term to refer to any tool or service used to store and 
+distribute container images, like those listed below:
 
+- 1.DockerHub:
+This is one of the largest repositories with thousands of Docker images stored in public and private 
+(more on that in a minute) Docker Registries. It integrates with the most used version control systems 
+like GitHub and BitBucket.
+
+- 2.Amazon Elastic Container Registry (ECR):
+Offering seamless integration with AWS Identity and Access Management (IAM) service for authentication, 
+it supports private and public Docker registries. Among its features includes vulnerability image scanning 
+and immutable image tags (i.e., it’s impossible to override an image once pushed to the registry),
+
+- 3.Azure Container Registry (ACR):
+Supporting multi-region registries and Active Directory authentication, ACR offers automatic purging of old
+images, retention policies, and content trust.
+
+- 4.Google Artifact Registry (GAR):
+Previously called GCR, it’s hosted on the Google Cloud Platform and features automated image builds through
+Google Cloud Source Repositories, GitHub, and Bitbucket integrations. It also includes a vulnerability scan
+and it integrates perfectly with CI/CD pipelines to help you streamline container deployments.
+
+- 5.GitHub Package Registry:
+Free for public images, GitHub Package Registry offers enhanced security permissions and supports public and
+private image storage. Authentication is managed via personal access token or a GitHub account if you use a 
+public repository.
+
+- 6.Red Hut Quay:
+Offering a secure and scalable Docker registry platform for private cloud development projects, Red Hut 
+Quay integrates with GitHub, BitBucket, GitLab, Red Hat OpenShift, and more. 
 
 
 
