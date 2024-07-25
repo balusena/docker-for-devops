@@ -33,7 +33,7 @@ must be recreated.
 This is the first state in the container lifecycle. This state denotes that the container is created but 
 it's not running. This is achieved using the `docker create` command.
 ```
-$ docker create --name my-container my-nginx-image
+ubuntu@balasenapathi:~$ docker create --name my-container my-nginx-image
 e21a7fc8a3e5b1e0f1a8c42e287cb9c1b8b564e3c2c74df0f82f558d3e9d62d1
 ```
 - When we create a Docker container, a read-write (R/W) layer is added to the read-only (R/O) layer of the 
@@ -53,7 +53,7 @@ e21a7fc8a3e5b1e0f1a8c42e287cb9c1b8b564e3c2c74df0f82f558d3e9d62d1
 ### 2.Started/Running
 This state denotes that the commands listed in the image are being executed one by one by the container.
 ```
-$ docker container start my-container
+ubuntu@balasenapathi:~$ docker container start my-container
 my-container
 ```
 - When we start a container, Docker sets up the resources that the container needs, such as network
@@ -64,7 +64,7 @@ my-container
 The task done by the above two commands can be achieved using a single command also (`docker run`). 
 This command creates the container and then starts it immediately.
 ```
-docker run -d --name my-container my-nginx-image
+ubuntu@balasenapathi:~$ docker run -d --name my-container my-nginx-image
 e21a7fc8a3e5b1e0f1a8c42e287cb9c1b8b564e3c2c74df0f82f558d3e9d62d1
 ```
 ### 3.Killed / Exited
