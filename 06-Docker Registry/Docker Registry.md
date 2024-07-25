@@ -11,4 +11,10 @@ and services, a Docker registry is a bit like a warehouse shelf filled with Dock
 
 ![Docker Registry](https://github.com/balusena/docker-for-devops/blob/main/06-Docker%20Registry/docker_registry_image_container_relation.png)
 
+Each Docker registry is divided into sections (i.e., Docker repositories), just like a warehouse shelf is 
+divided into different sections containing different products. Each Docker repository includes various 
+versions (i.e., tags) of a single Docker image and a description.
 
+![Ubuntu Docker Image](https://github.com/balusena/docker-for-devops/blob/main/06-Docker%20Registry/ubuntu_docker.png)
+
+![Ubuntu Docker Image Versions](https://github.com/balusena/docker-for-devops/blob/main/06-Docker%20Registry/official_ubuntu_docker_repository_versions.png)
