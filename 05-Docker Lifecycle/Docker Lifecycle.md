@@ -197,25 +197,25 @@ Starts a previously created (but stopped) container named my-container.
 
 - 2.Stop a Container:
 ```
-ubuntu@balasenapathi:~$ docker stop my-running-container
+ubuntu@balasenapathi:~$ docker stop my-container
 ```
 Stops the running container named my-running-container.
 
 - 3.Pause a Container:
 ```
-ubuntu@balasenapathi:~$ docker pause my-running-container
+ubuntu@balasenapathi:~$ docker pause my-container
 ```
 Pauses all processes in the container named my-running-container.
 
 - 4.Unpause a Container:
 ```
-ubuntu@balasenapathi:~$ docker unpause my-running-container
+ubuntu@balasenapathi:~$ docker unpause my-container
 ```
 Unpauses the container named my-running-container.
 
 - 5.Restart a Container:
 ```
-ubuntu@balasenapathi:~$ docker restart my-running-container
+ubuntu@balasenapathi:~$ docker restart my-container
 ```
 Restarts the container named my-running-container.
 
@@ -234,26 +234,26 @@ Lists all containers, including those that are stopped.
 
 - 3.View Container Logs:
 ```
-ubuntu@balasenapathi:~$ docker logs my-running-container
+ubuntu@balasenapathi:~$ docker logs my-container
 ```
 Fetches logs from the container named my-running-container.
 
 - 4.Inspect a Container:
 ```
-ubuntu@balasenapathi:~$ docker inspect my-running-container
+ubuntu@balasenapathi:~$ docker inspect my-container
 ```
 Displays detailed information about the container named my-running-container.
 
 ### 5.Interacting with Containers
 - 1.Execute a Command in a Running Container:
 ```
-ubuntu@balasenapathi:~$ docker exec -it my-running-container /bin/bash
+ubuntu@balasenapathi:~$ docker exec -it my-container /bin/bash
 ```
 Opens an interactive shell (/bin/bash) inside the running container named my-running-container.
 
 - 2.Attach to a Running Container:
 ```
-ubuntu@balasenapathi:~$ docker attach my-running-container
+ubuntu@balasenapathi:~$ docker attach my-container
 ```
 Attaches to the container’s main process.
 
@@ -266,7 +266,7 @@ Forces removal of the container named my-container, stopping it if it is running
 
 - 2. Remove a Container:
 ```
-ubuntu@balasenapathi:~$ docker rm my-stopped-container
+ubuntu@balasenapathi:~$ docker rm my-container
 ```
 Removes the container named my-stopped-container, which must be stopped first.
 
