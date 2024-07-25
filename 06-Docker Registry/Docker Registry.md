@@ -163,7 +163,7 @@ Just remember to download only trusted images and scan them for vulnerabilities 
 forget that DockerHub’s free Autobuild service was abused to mine cryptocurrencies. Bad guys are 
 everywhere!
 
-#### 2. The Docker Private Registry
+#### 2.The Docker Private Registry
 Did you ever have to slow down or even delay an application deployment project because of security 
 concerns , like 67% of enterprises interviewed by RedHat? If you’re looking for a more secure environment, 
 a few extra features, and privacy without breaking the bank, then a Docker private registry may be the 
@@ -190,7 +190,7 @@ Among its features, a Docker private registry includes:
 
 ![How SSL Certificate Protect Your Docker Registry](https://github.com/balusena/docker-for-devops/blob/main/06-Docker%20Registry/how_ssl_certificate_protect_your_docker_registry.png)
 
-#### 3.3. The Docker Trusted Registry (DTR)
+#### 3.The Docker Trusted Registry (DTR)
 As organizations are shifting their development processes to the cloud, concerns about cloud security are 
 steadily growing. According to a Cybersecurity Insiders report, 95% of organizations’ security professionals
 are moderately to extremely concerned about cloud security.
@@ -229,8 +229,7 @@ There are several ways to sign an image. But, in general, before uploading the i
   
 Now the image is ready to be uploaded to the DTR.
 
-![Image Signing Process]((https://github.com/balusena/docker-for-devops/blob/main/06-Docker%20Registry/image_signing_process.png)
-
+![Image Signing Process](https://github.com/balusena/docker-for-devops/blob/main/06-Docker%20Registry/image_signing_process.png)
 
 
 
