@@ -152,3 +152,172 @@ It can only be removed. Although it is partially removed, it does not consume an
 ubuntu@balasenapathi:~$ docker container rm my-container
 Error response from daemon: Removal failed: my-container: cannot be removed, it is in a dead state
 ```
+
+## Docker commands associated with the container lifecycle, covering various scenarios:
+
+### 1.Image Lifecycle
+- 1.Build an Image:
+```
+ubuntu@balasenapathi:~$ docker build -t my-nginx-image .
+```
+Builds an image named my-nginx-image from the Dockerfile in the current directory.
+
+- 2.List Images:
+```
+ubuntu@balasenapathi:~$ docker images
+```
+Lists all Docker images on the system.
+
+- Remove an Image:
+```
+ubuntu@balasenapathi:~$ docker rmi my-nginx-image
+```
+Removes the image named my-nginx-image.
+
+### 2.Container Creation
+- 1.Create a Container:
+```
+ubuntu@balasenapathi:~$ docker create --name my-container my-nginx-image
+```
+Creates a container named my-container from the my-nginx-image image but does not start it.
+
+- 2.Run a Container:
+```
+ubuntu@balasenapathi:~$ docker run -d --name my-running-container -p 8080:80 my-nginx-image
+```
+Creates and starts a container named my-running-container from my-nginx-image, mapping port 80 in the 
+container to port 8080 on the host.
+
+### 3.Running Containers
+- 1.Start a Container:
+```
+ubuntu@balasenapathi:~$ docker start my-container
+```
+Starts a previously created (but stopped) container named my-container.
+
+- 2.Stop a Container:
+```
+ubuntu@balasenapathi:~$ docker stop my-running-container
+```
+Stops the running container named my-running-container.
+
+- 3.Pause a Container:
+```
+ubuntu@balasenapathi:~$ docker pause my-running-container
+```
+Pauses all processes in the container named my-running-container.
+
+- 4.Unpause a Container:
+```
+ubuntu@balasenapathi:~$ docker unpause my-running-container
+```
+Unpauses the container named my-running-container.
+
+- 5.Restart a Container:
+```
+ubuntu@balasenapathi:~$ docker restart my-running-container
+```
+Restarts the container named my-running-container.
+
+### 4.Monitoring and Managing Containers
+- 1.List Running Containers:
+```
+ubuntu@balasenapathi:~$ docker ps
+```
+Lists all running containers.
+
+- 2.List All Containers:
+```
+ubuntu@balasenapathi:~$ docker ps -a
+```
+Lists all containers, including those that are stopped.
+
+- 3.View Container Logs:
+```
+ubuntu@balasenapathi:~$ docker logs my-running-container
+```
+Fetches logs from the container named my-running-container.
+
+- 4.Inspect a Container:
+```
+ubuntu@balasenapathi:~$ docker inspect my-running-container
+```
+Displays detailed information about the container named my-running-container.
+
+### 5.Interacting with Containers
+- 1.Execute a Command in a Running Container:
+```
+ubuntu@balasenapathi:~$ docker exec -it my-running-container /bin/bash
+```
+Opens an interactive shell (/bin/bash) inside the running container named my-running-container.
+
+- 2.Attach to a Running Container:
+```
+ubuntu@balasenapathi:~$ docker attach my-running-container
+```
+Attaches to the container’s main process.
+
+### 6.Stopping and Removing Containers
+- 1.Stop and Remove a Container:
+```
+ubuntu@balasenapathi:~$ docker rm -f my-container
+```
+Forces removal of the container named my-container, stopping it if it is running.
+
+- 2. Remove a Container:
+```
+ubuntu@balasenapathi:~$ docker rm my-stopped-container
+```
+Removes the container named my-stopped-container, which must be stopped first.
+
+### 7.Container Cleanup
+- 1.Remove Unused Containers:
+```
+ubuntu@balasenapathi:~$ docker container prune
+```
+Removes all stopped containers.
+
+- 2.Remove Unused Images:
+```
+ubuntu@balasenapathi:~$ docker image prune
+```
+Removes dangling images (images not referenced by any container).
+
+- 3.Remove Unused Networks:
+```
+ubuntu@balasenapathi:~$ docker network prune
+```
+Removes unused networks.
+
+- 4.Remove Unused Volumes:
+```
+ubuntu@balasenapathi:~$ docker volume prune
+```
+Removes unused volumes.
+
+### 8.System Maintenance
+- 1.Clean Up System:
+```
+ubuntu@balasenapathi:~$ docker system prune
+```
+Removes all unused containers, networks, images (both dangling and unreferenced), and optionally, volumes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
