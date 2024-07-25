@@ -82,4 +82,22 @@ application. To create a container, you’ll usually:
    - 3.Upload your Docker images to the Docker registry. This is where the Docker registry comes into play. 
        Once the images are created, you’ll need a place to store and manage them.
 
-![create_docker_image_and_upload_to_docker_registry](https://github.com/balusena/docker-for-devops/blob/main/06-Docker%20Registry/create_docker_image_and_upload_to_docker_registry.png)
+![Create Docker Image And Upload To Docker registry](https://github.com/balusena/docker-for-devops/blob/main/06-Docker%20Registry/create_docker_image_and_upload_to_docker_registry.png)
+
+That’s it. Now, other users can access the Docker registry and search and/or download the image you’ve just 
+uploaded to use for their development project or to run as a container.
+
+![The Role of Docker Registry In Image Storage](https://github.com/balusena/docker-for-devops/blob/main/06-Docker%20Registry/the_role_of_docker_registry_in_image_storage.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
