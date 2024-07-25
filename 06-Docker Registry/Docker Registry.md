@@ -95,7 +95,7 @@ The term “Docker registry” can sometimes be a bit confusing as it can be use
 with a lowercase “r.” This is because we used the term to refer to any tool or service used to store and 
 distribute container images, like those listed below:
 
-- 1.DockerHub:
+#### 1.DockerHub:
 This is one of the largest repositories with thousands of Docker images stored in public and private 
 (more on that in a minute) Docker Registries. It integrates with the most used version control systems 
 like GitHub and BitBucket.
