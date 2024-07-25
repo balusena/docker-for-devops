@@ -242,7 +242,7 @@ Do your security policies require images to be signed by multiple parties or mor
 Each image can have multiple signatures, from the same party or multiple parties. Bye-bye risky or suspicious
 images!
 
-# Summary:
+## Summary:
 
 “What is a Docker Registry?” In layman’s terms, a Docker Registry is a great way to effectively create, 
 manage and distribute container/Docker images. It enables developers and organizations to achieve super-fast
