@@ -4,3 +4,5 @@ allowing data to be shared and stored outside the container's lifecycle. Volumes
 that needs to be retained even if the container is deleted or replaced. This makes them ideal for maintaining
 important data across container deployments.
 
+![Docker Volumes](https://github.com/balusena/docker-for-devops/blob/main/07-Docker%20Volumes/docker_volumes.png)
+
