@@ -231,7 +231,31 @@ Now the image is ready to be uploaded to the DTR.
 
 ![Image Signing Process](https://github.com/balusena/docker-for-devops/blob/main/06-Docker%20Registry/image_signing_process.png)
 
+What happens when a user downloads the signed image? The signature is validated by decrypting the digest 
+with the public key (usually fetched from a signature store or a local directory) and comparing the hashes. 
+If they match, the signature is valid, and the image integrity hasn’t been compromised since it was signed.
 
+Does all this sound familiar? Yup, essentially the same PKI-based process used by code signing and .exe file
+signing.
+
+Do your security policies require images to be signed by multiple parties or more than once during the SDLC?
+Each image can have multiple signatures, from the same party or multiple parties. Bye-bye risky or suspicious
+images!
+
+Summary:
+
+“What is a Docker Registry?” In layman’s terms, a Docker Registry is a great way to effectively create, 
+manage and distribute container/Docker images. It enables developers and organizations to achieve super-fast
+software delivery without compromising on automation, and, in some cases, security.
+
+Docker registries come in different flavors. By using the Docker public Registry, smaller businesses, and
+individuals can take advantage of standardized, easily accessible, and open-source images. While corporations
+and big enterprises in need of a more secure environment can keep their proprietary images private by 
+investing in a Docker private registry.
+
+Docker registries facilitate automation, streamline collaboration and processes through other platforms 
+integration (e.g., GitHub and BitBucket). And with containerization quickly replacing the traditional 
+development environment, Docker registries have become something organizations can’t do without.
 
 
 
