@@ -132,7 +132,7 @@ manage and distribute images supported by DockerHub.
 - 1.The Docker public Registry,
 - 2.The Docker private Registry, and
 - 3.The Docker Trusted Registry (DTR).
-- 
+
 Time to explore all of them, one by one, more in depth.
 
 ### 5.Docker Registries: The Public, Private, and Trusted
@@ -190,6 +190,46 @@ Among its features, a Docker private registry includes:
 
 ![How SSL Certificate Protect Your Docker Registry](https://github.com/balusena/docker-for-devops/blob/main/06-Docker%20Registry/how_ssl_certificate_protect_your_docker_registry.png)
 
+#### 3.3. The Docker Trusted Registry (DTR)
+As organizations are shifting their development processes to the cloud, concerns about cloud security are 
+steadily growing. According to a Cybersecurity Insiders report, 95% of organizations’ security professionals
+are moderately to extremely concerned about cloud security.
+
+Who could blame them, when 84% of open-source codebases scanned in 2022 contained at least one vulnerability?
+That’s why validating the integrity and authenticity of all images pulled from Docker registries has become
+essential.
+
+How can you do that? In our previous point, among the security features we listed, we mentioned the
+possibility of uploading signed images to the Docker private Registry. The Docker Trusted Registry (DTR), 
+Docker’s image storage solution for enterprises, takes this to another level.
+
+In fact, it allows you to store and download digitally signed images only, guaranteeing their authenticity 
+and protecting them from unauthorized modification. As a result, application consumers are, in turn, 
+protected by man-in-the-middle attacks.
+
+To go back to our warehouse example, the Docker trusted Registry is a bit like those heavily guarded 
+warehouses. Nothing gets in or out without being identified (image signature) and checked for anomalies 
+first.
+
+Why is it important? When a developer pushes their image to a Docker registry, the image with all its 
+version layers (sometimes controlled by other developers or teams), is made available to everyone who has 
+access to the registry.
+
+So, how can users downloading the image be sure that it has not been tampered with, and that it is really 
+coming from a trusted source? How can you validate the security of the images throughout the whole software 
+development life cycle? This is where the digital signature comes in.
+
+There are several ways to sign an image. But, in general, before uploading the image to the Docker trusted Registry, the developer uses a tool of their choice (e.g., the Docker Content Trust [DCT] tool, Harbor, or JFrog Artifactory) to:
+
+- 1.Hash the file using a strong algorithm (e.g., SHA-256),
+
+- 2.Encrypt the outcome (i.e., digest) with his private key,
+
+- 3.Create the digital signature block by adding his code signing certificate to the image.
+  
+Now the image is ready to be uploaded to the DTR.
+
+![Image Signing Process]((https://github.com/balusena/docker-for-devops/blob/main/06-Docker%20Registry/image_signing_process.png)
 
 
 
