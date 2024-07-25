@@ -6,7 +6,7 @@ and `dead`. In this repo we will examine each of these states in detail and expl
 when a container enters each state. By understanding these stages, we will have a better grasp of how to work 
 with Docker containers.
 
-![Docker Lifecycle]("https://github.com/balusena/docker-for-devops/blob/main/05-Docker%20Lifecycle/docker_lifecycle.png")
+![Docker Lifecycle](https://github.com/balusena/docker-for-devops/blob/main/05-Docker%20Lifecycle/docker_lifecycle.png)
 
 
 
