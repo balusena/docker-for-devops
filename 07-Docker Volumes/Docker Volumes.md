@@ -601,6 +601,7 @@ ubuntu@balasenapathi:/home/h2c-volume$ sudo touch app.js
 ubuntu@balasenapathi:/home/h2c-volume$ ls
 app.js
 ```
+
 #### 3.Creating Docker Container "h2c" with Host Volume "h2c-volume"
 
 ```
@@ -622,6 +623,9 @@ root@d1b35717921f:/# cd myvolume
 root@d1b35717921f:/myvolume# ls
 app.js
 ```
+- Note: 
+  This is how we can map a host directory(/home/h2c-volume) to the container(h2c) myvolume directory by 
+  using docker volumes.
 
 #### 4.Now create a file new.json in container h2c in myvloume directory.
 
@@ -663,7 +667,7 @@ app.js new.json
   demonstrates the effective synchronization provided by the Docker bind mount, ensuring that files 
   created or modified in the container are also updated on the host.
 
-#### 6.What happens if we delete the container h2c does data is persistent in host h2c-volume directory.
+#### 6.What happens if we delete the container "h2c", does data is persistent in host "h2c-volume" directory.
 
 ```
 # 1.Running Docker Container h2c with Host Volume h2c-volume.
