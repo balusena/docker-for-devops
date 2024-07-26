@@ -383,4 +383,70 @@ app.js	package.json
 ```
 - Note: We can confirm that the file "package.json" created in container3 is visible in both Container1 and Container2 as well.
 
+### 7.Creating a volume by using Dockerfile
 
+#### Clone this repository and move to example folder
+```
+git clone https://github.com/balusena/docker-for-devops.git
+cd  07-Docker Volumes/examples
+```
+#### Dockerfile
+```
+FROM ubuntu
+VOLUME ["/volume1"]
+```
+#### Create image from the Dockrfile
+```
+# List the docker images.
+
+ubuntu@balasenapathi:~$ docker images
+REPOSITORY           TAG               IMAGE ID       CREATED        SIZE
+ubuntu               latest            5a81c4b8502e   8 days ago     77.8MB
+balusena/money_api   latest            1665bedba94e   2 weeks ago    626MB
+python               3.8-slim-buster   52456bc7bf3e   4 weeks ago    118MB
+hello-world          latest            9c7a54a9a43c   2 months ago   13.3kB
+
+# Building a Docker Image Named myvolumeimage with a Volume Specified in Dockerfile.
+
+ubuntu@balasenapathi:~$ docker build -t myvolumeimage .
+Sending build context to Docker daemon  6.026GB
+Step 1/2 : FROM ubuntu
+---> 5a81c4b8502e
+Step 2/2 : VOLUME ["/volume1"]
+---> Running in 1ad3feaeec36
+Removing intermediate container 1ad3feaeec36
+---> d1b35717921f
+Successfully built d1b35717921f
+Successfully tagged myvolumeimage:latest
+
+# List the docker images.
+
+ubuntu@balasenapathi:~$ docker images
+REPOSITORY           TAG               IMAGE ID       CREATED          SIZE
+myvolumeimage        latest            d1b35717921f   45 minutes ago   77.8MB
+ubuntu               latest            5a81c4b8502e   8 days ago       77.8MB
+balusena/money_api   latest            1665bedba94e   2 weeks ago      626MB
+python               3.8-slim-buster   52456bc7bf3e   4 weeks ago      118MB
+hello-world          latest            9c7a54a9a43c   2 months ago     13.3kB
+```
+#### Create a container from "myvolumeimage" docker image.
+```
+# Create a Container from myvolumeimage Docker Image.
+
+ubuntu-dsbda@ubuntudsbda-virtual-machine:~$ docker run -it --name containerfromimage myvolumeimage sh
+
+# List Root Directory Contents.
+
+root@b7f4a9d5e8c9:/# ls
+bin  boot  dev  etc  home  lib  lib32  lib64  libx32  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var  volume1
+
+# Change Directory to volume1:
+
+root@b7f4a9d5e8c9:/# cd volume1
+
+#List Contents of volume1:
+
+root@b7f4a9d5e8c9:/volume1# ls
+```
+- Note:
+  You can notice that we have not added the -v flag in the docker run command because we have already declared the volume inside the Dockerfile while creating the Docker image, i.e., myvolumeimage. The volume specified in the Dockerfile is automatically included when creating a container from this image.
