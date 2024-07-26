@@ -793,7 +793,8 @@ ubuntu@balasenapathi:~$ docker ps
 CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS     NAMES
 8ffe7b843b01   nginx     "/docker-entrypoint.…"   30 minutes ago   Up 30 minutes   80/tcp    vtwebint01
 ```
-#### 5.Now we are going to exit this container and stop this container
+#### 5.Now we are going to exit this container and stop the container.
+
 ````
 # 1.Exit from the docker container.
 
@@ -808,10 +809,10 @@ CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS       
 
 # 3.Stop and remove the container:vtwebint01.
 
-```
 ubuntu-dsbda@ubuntudsbda-virtual-machine:~$ docker rm vtwebint01
 vtwebint01
 ```
+
 #### 4.Searching for file1 After Deleting the Container vtwebint01.
 
 ```
@@ -828,7 +829,7 @@ find: ‘/run/user/1000/gvfs’: Permission denied
   backend directory that contained file1. This demonstrates the importance of using Docker volumes to
   persist data, ensuring that files remain available even after the container is removed.
 
-23456
+
 
 
 
