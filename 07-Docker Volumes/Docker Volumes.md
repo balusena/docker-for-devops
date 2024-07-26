@@ -624,7 +624,7 @@ root@d1b35717921f:/myvolume# ls
 app.js
 ```
 - Note: 
-  This is how we can map a host directory(/home/h2c-volume) to the container(h2c) myvolume directory by 
+  This is how we can map a host directory (/home/h2c-volume) to the container (h2c) myvolume directory by 
   using docker volumes.
 
 #### 4.Now create a file new.json in container h2c in myvloume directory.
