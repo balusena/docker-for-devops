@@ -652,11 +652,18 @@ app.js  new.json
 #### Now verify that new.json file is reflected in host h2c-volume directory.
 
 ```
-ubuntu@balasenapathi:/home/h2c-volume$ sudo touch new.json
-[sudo] password for ubuntu-dsbda: balu
-ubuntu-dsbda@ubuntudsbda-virtual-machine:/home/h2c-volume$ ls
-new.json
+# 1. List the file new.json in h2c-volume directory
+
+ubuntu@balasenapathi:/home/h2c-volume$ ls
+app.js new.json
 ```
+
+- Note: The presence of new.json in the /home/h2c-volume directory on the host confirms that changes 
+  made within the container's /myvolume directory are successfully reflected on the host. This 
+  demonstrates the effective synchronization provided by the Docker bind mount, ensuring that files 
+  created or modified in the container are also updated on the host.
+
+
 
 
 
