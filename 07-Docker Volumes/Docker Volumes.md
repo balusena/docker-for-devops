@@ -85,6 +85,6 @@ Docker supports 3 different types of volumes for handling persistent data. Each 
 cases and has distinct management characteristics. Here are the main types of Docker volumes:
 
 ### 1. Host Volumes (Bind Mounts)
-*Definition*: Uses a directory or file from the host filesystem and mounts it into the container.
-*Management*: Managed by the host system.
-*Use Case*: When you need direct access to host files, such as configuration files or code repositories.
+#### Definition: Uses a directory or file from the host filesystem and mounts it into the container.
+#### Management: Managed by the host system.
+#### Use Case: When you need direct access to host files, such as configuration files or code repositories.
