@@ -84,7 +84,46 @@ for applications that need reliable and persistent storage.
 Docker supports 3 different types of volumes for handling persistent data. Each type serves specific use 
 cases and has distinct management characteristics. Here are the main types of Docker volumes:
 
-### 1. Host Volumes (Bind Mounts)
+### 1.Host Volumes (Bind Mounts)
 #### Definition: Uses a directory or file from the host filesystem and mounts it into the container.
 #### Management: Managed by the host system.
 #### Use Case: When you need direct access to host files, such as configuration files or code repositories.
+
+```
+# Run a container with a bind mount
+
+ubuntu@balasenapathi:~$ docker run -d -v /path/on/host:/path/in/container --name my-container nginx
+```
+- /path/on/host      ====> your host machine (physical file) path ====> /home/mount/data
+
+- /path/in/container ====> your container (virtual file) path     ====> /usr/share/nginx/html
+
+Note: Changes to /path/on/host on the host are reflected in /path/in/container inside the container, and vice versa.
+
+### 2.Anonymous Volumes
+#### Definition: Volumes that Docker creates automatically when the -v option is used without specifying a name.
+#### Management: Managed by Docker, but the volume is given a random name.
+#### Use Case: Temporary storage for data that doesn't need to be named or reused after the container is removed.
+
+```
+# Run a container with an anonymous volume
+
+ubuntu@balasenapathi:~$ docker run -d -v /path/in/container --name my-container nginx
+```
+Note: Docker automatically creates a volume and mounts it to /path/in/container inside the container.
+
+### 3.Named Volumes (Managed Volumes)
+#### Definition: Volumes that you explicitly create and name using Docker commands.
+#### Management: Managed by Docker and can be easily referenced and reused by name.
+#### Use Case: Persistent storage that needs to be retained across multiple container instances and easily shared among containers.
+
+```
+# Create a named volume
+docker volume create my-named-volume
+
+# Run a container with the named volume
+docker run -d -v my-named-volume:/path/in/container --name my-container nginx
+```
+Note: The named volume my-named-volume is used for /path/in/container, and data persists even if the container is removed.
+
+![Docker Volume Types](https://github.com/balusena/docker-for-devops/blob/main/07-Docker%20Volumes/docker_volume_types.png)
