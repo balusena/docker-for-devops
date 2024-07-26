@@ -649,7 +649,7 @@ root@d1b35717921f:/myvolume# ls
 app.js  new.json
 ```
 
-#### Now verify that new.json file is reflected in host h2c-volume directory.
+#### 5.Now verify that new.json file is reflected in host h2c-volume directory.
 
 ```
 # 1. List the file new.json in h2c-volume directory
@@ -663,7 +663,52 @@ app.js new.json
   demonstrates the effective synchronization provided by the Docker bind mount, ensuring that files 
   created or modified in the container are also updated on the host.
 
+#### 6.What happens if we delete the container h2c does data is persistent in host h2c-volume directory.
 
+```
+# 1.Running Docker Container h2c with Host Volume h2c-volume.
+
+ubuntu@balasenapathi:/home/h2c-volume$ docker run -it --name h2c -v ${PWD}:/myvolume ubuntu sh
+
+# 2.Check Container's Root Directory Contents.
+
+root@d1b35717921f:/# ls
+bin  boot  dev	etc  home  lib	lib32  lib64  libx32  media  mnt  myvolume  opt  proc  root  run  sbin srv  sys  tmp  usr  var
+
+# 3.Navigate to the Mounted Volume Directory.
+
+root@d1b35717921f:/# cd myvolume
+
+# 4.Now create files "app.py" , "node.js"  in myvolume directory.
+
+root@d1b35717921f:/myvolume# touch app.py  new.js
+
+# 5.List Contents of Mounted Volume Directory.
+
+root@d1b35717921f:/myvolume# ls
+app.py  node.js
+
+# 6.Stop and remove the container:h2c:
+
+ubuntu@balasenapathi:~$ docker rm -f h2c
+h2c
+
+*******************************************************************************
+
+# 7.Now go to host directory and list the files in h2c-volume directory
+
+ubuntu@balasenapathi:/home/h2c-volume$ ls
+app.py  node.js
+```
+
+- Note: 
+  Deleting the container does not delete the data in the host directory (/home/h2c-volume). The data in 
+  the bind-mounted directory persists on the host even after the container is removed. This ensures that 
+  your important data is retained independently of the container's lifecycle.
+
+### Example for Docker Volume types:
+
+1.
 
 
 
