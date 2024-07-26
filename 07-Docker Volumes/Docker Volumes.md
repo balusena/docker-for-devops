@@ -450,3 +450,80 @@ root@b7f4a9d5e8c9:/volume1# ls
 ```
 - Note:
   You can notice that we have not added the -v flag in the docker run command because we have already declared the volume inside the Dockerfile while creating the Docker image, i.e., myvolumeimage. The volume specified in the Dockerfile is automatically included when creating a container from this image.
+
+#### Share volume with other containers (Container to container)
+Now, create container4 using the Docker image myvolumeimage which has the volume defined, and share the 
+volume from containerfromimage
+
+```
+# Create container4 using Docker image myvolumeimage which has the volume defined, share volume from containerfromimage.
+
+ubuntu-dsbda@ubuntudsbda-virtual-machine:~$ docker run -it --name container4 --volumes-from containerfromimage ubuntu sh
+
+# List Root Directory Contents:
+
+root@b8d5c2e1f8b9:/# ls
+bin  boot  dev  etc  home  lib  lib32  lib64  libx32  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var  volume1
+
+# Change Directory to volume1:
+
+root@b8d5c2e1f8b9:/# cd volume1 
+
+# List Contents of volume1:
+
+root@b8d5c2e1f8b9:/volume1# ls
+```
+
+### Create a file new.js in container4 this gets reflected and mapped in containerfromimage container volume1 directory
+```
+
+# ls
+# touch new.js
+# ls
+new.js
+
+# Create container4 using Docker image myvolumeimage which has the volume defined, share volume from containerfromimage.
+
+ubuntu-dsbda@ubuntudsbda-virtual-machine:~$ docker run -it --name container4 --volumes-from containerfromimage ubuntu sh
+
+# List Root Directory Contents:
+
+root@b8d5c2e1f8b9:/# ls
+bin  boot  dev  etc  home  lib  lib32  lib64  libx32  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var  volume1
+
+# Change Directory to volume1:
+
+root@b8d5c2e1f8b9:/# cd volume1 
+
+# Create a New File new.js:
+
+root@b8d5c2e1f8b9:/volume1# touch new.js
+
+# List Contents of volume1:
+
+root@b8d5c2e1f8b9:/volume1# ls
+new.js
+```
+### Verify new.js File reflected in containerfromimage volume1 After created in container4.
+```
+# Create a Container from myvolumeimage Docker Image.
+
+ubuntu-dsbda@ubuntudsbda-virtual-machine:~$ docker run -it --name containerfromimage myvolumeimage sh
+
+# List Root Directory Contents.
+
+root@b7f4a9d5e8c9:/# ls
+bin  boot  dev  etc  home  lib  lib32  lib64  libx32  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var  volume1
+
+# Change Directory to volume1:
+
+root@b7f4a9d5e8c9:/# cd volume1
+
+#List Contents of volume1:
+
+root@b7f4a9d5e8c9:/volume1# ls
+new.js
+```
+- Note:
+  The new.js file created in container4 is successfully reflected in the volume1 directory of 
+  containerfromimage. This confirms that volumes are correctly shared across containers.
