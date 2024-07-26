@@ -215,21 +215,21 @@ hello-world          latest            9c7a54a9a43c   2 months ago   13.3kB
 #### 1.Now create a container1 with volume in it:
 
 ```
-# Run the Docker Container1 with Volume Mount
+# 1.Run the Docker Container1 with Volume Mount
 
 ubuntu@balasenapathi:~$ docker run -it --name container1 -v /myvolume ubuntu sh
 
-# List Directories in the Container1
+# 2.List Directories in the Container1
 
 root@8ffe7b843b01:/# ls
 
 bin  boot  dev	etc  home  lib	lib32  lib64  libx32  media  mnt  myvolume  opt  proc  root  run  sbin	srv  sys  tmp  usr  var
 
-# Navigate to the Mounted Volume Directory in container1
+# 3.Navigate to the Mounted Volume Directory in container1
 
 root@8ffe7b843b01:/# cd myvolume
 
-# List Contents of the Mounted Volume in container1
+# 4.List Contents of the Mounted Volume in container1
 
 root@8ffe7b843b01:/# ls
 ```
@@ -237,21 +237,21 @@ root@8ffe7b843b01:/# ls
 #### 2.Now create another container2 using volumes from container1:
 
 ```
-# Run a Docker Container2 with Volume from Container1
+# 1.Run a Docker Container2 with Volume from Container1
 
 ubuntu@balasenapathi:~$ docker run -it --name container2 --volumes-from container1 ubuntu sh
 
-# List Directories in the Container2
+# 2.List Directories in the Container2
 
 root@6rvc9s246v03:/# ls
 
 bin  boot  dev	etc  home  lib	lib32  lib64  libx32  media  mnt  myvolume  opt  proc  root  run  sbin	srv  sys  tmp  usr  var
 
-# Navigate to the Mounted Volume Directory in Container2
+# 3.Navigate to the Mounted Volume Directory in Container2
 
 root@6rvc9s246v03:/# cd myvolume
 
-# List Contents of the Mounted Volume in Container2
+# 4.List Contents of the Mounted Volume in Container2
 
 root@6rvc9s246v03:/# ls
 ```
@@ -259,28 +259,28 @@ root@6rvc9s246v03:/# ls
 #### 3.Now we are inside the container2 and if we create app.js in myvolume then it gets reflected in container1 myvolume directory:
 
 ```
-# Start the Container2 with Volume from the Container1
+# 1.Start the Container2 with Volume from the Container1
 
 ubuntu@balasenapathi:~$ docker run -it --name container2 --volumes-from container1 ubuntu sh
 
-# List Directories in the Container2
+# 2.List Directories in the Container2
 
 root@6rvc9s246v03:/# ls
 bin  boot  dev	etc  home  lib	lib32  lib64  libx32  media  mnt  myvolume  opt  proc  root  run  sbin srv  sys  tmp  usr  var
 
-# Navigate to the Mounted Volume Directory in Container2
+# 3.Navigate to the Mounted Volume Directory in Container2
 
 root@6rvc9s246v03:/# cd myvolume
 
-# List Contents of the Mounted Volume in Container2
+# 4.List Contents of the Mounted Volume in Container2
 
 root@6rvc9s246v03:/# ls
 
-# Create a New File in the Volume in Container2
+# 5.Create a New File in the Volume in Container2
 
 root@6rvc9s246v03:/# touch app.js
 
-# Verify the New File "app.js" was created in Mounted Volume in Container2
+# 6.Verify the New File "app.js" was created in Mounted Volume in Container2
 
 root@6rvc9s246v03:/# ls
 app.js
@@ -289,21 +289,21 @@ app.js
 ### 4.Verification: Now navigate to container1 and verify that app.js is reflected from Container2:
 
 ```
-# Run the Docker Container1 with Volume Mount
+# 1.Run the Docker Container1 with Volume Mount
 
 ubuntu-dsbda@ubuntudsbda-virtual-machine:~$ docker run -it --name container1 -v /myvolume ubuntu sh
   
-# List Directories in the Container1
+# 2.List Directories in the Container1
 
 root@8ffe7b843b01:/# ls
 
 bin  boot  dev	etc  home  lib	lib32  lib64  libx32  media  mnt  myvolume  opt  proc  root  run  sbin	srv  sys  tmp  usr  var
 
-# Navigate to the Mounted Volume Directory in container1
+# 3.Navigate to the Mounted Volume Directory in container1
 
 root@8ffe7b843b01:/# cd myvolume
 
-# List Contents of the Mounted Volume in container1
+# 4.List Contents of the Mounted Volume in container1
 
 root@8ffe7b843b01:/# ls
 app.js
@@ -317,29 +317,29 @@ This shows that both containers are mapped by using Docker volumes.
 - Now, create container3, using volumes from container1 because we have created a volume in container1.
 
 ```
-# Run Container3 Using Volumes from Container1
+# 1.Run Container3 Using Volumes from Container1
 
 ubuntu@balasenapathi:~$ docker run -it --name container3 --volumes-from container1 ubuntu sh
 
-# List Root Directory Contents in Container3
+# 2.List Root Directory Contents in Container3
 
 root@c3nft579ner3:/# ls
 bin  boot  dev	etc  home  lib	lib32  lib64  libx32  media  mnt  myvolume  opt  proc  root 
 
-# Change Directory to myvolume in Container3
+# 3.Change Directory to myvolume in Container3
 
 root@c3nft579ner3:/# cd myvolume
 
-#List Contents of myvolume in Container3
+# 4.List Contents of myvolume in Container3
 
 root@c3nft579ner3:/myvolume# ls
 app.js
 
-# Create a New File in myvolume in Container3
+# 5.Create a New File in myvolume in Container3
 
 root@c3nft579ner3:/myvolume# touch package.json
 
-# List Updated Contents of myvolume in Container3
+# 6.List Updated Contents of myvolume in Container3
 
 root@c3nft579ner3:/myvolume# ls
 app.js  package.json
@@ -350,47 +350,48 @@ app.js  package.json
 - Verifying in Container1:
 
 ```
-# Run the Docker Container1 with Volume Mount
+# 1.Run the Docker Container1 with Volume Mount
 
 ubuntu@balasenapathi:~$ docker run -it --name container1 -v /myvolume ubuntu sh
 
-# List Directories in the Container1
+# 2.List Directories in the Container1
 
 root@8ffe7b843b01:/# ls
 
 bin  boot  dev	etc  home  lib	lib32  lib64  libx32  media  mnt  myvolume  opt  proc  root  run  sbin	srv  sys  tmp  usr  var
 
-# Navigate to the Mounted Volume Directory in container1
+# 3.Navigate to the Mounted Volume Directory in container1
 
 root@8ffe7b843b01:/# cd myvolume
 
-# List Contents of the Mounted Volume in container1
+# 4.List Contents of the Mounted Volume in container1
 
 root@8ffe7b843b01:/# ls
 app.js	package.json
 ```
 
 - Verifying in Container2:
-- 
+
 ```
-# Start the Container2 with Volume from the Container1
+# 1.Start the Container2 with Volume from the Container1
 
 ubuntu@balasenapathi:~$ docker run -it --name container2 --volumes-from container1 ubuntu sh
 
-# List Directories in the Container2
+# 2.List Directories in the Container2
 
 root@6rvc9s246v03:/# ls
 bin  boot  dev	etc  home  lib	lib32  lib64  libx32  media  mnt  myvolume  opt  proc  root  run  sbin srv  sys  tmp  usr  var
 
-# Navigate to the Mounted Volume Directory in Container2
+# 3.Navigate to the Mounted Volume Directory in Container2
 
 root@6rvc9s246v03:/# cd myvolume
 
-# List Contents of the Mounted Volume in Container2
+# 4.List Contents of the Mounted Volume in Container2
 
 root@6rvc9s246v03:/# ls
 app.js	package.json
 ```
+
 - Note: We can confirm that the file "package.json" created in container3 is visible in both Container1 and Container2 as well.
 
 ### 7.Creating a volume by using Dockerfile:
@@ -409,7 +410,7 @@ VOLUME ["/volume1"]
 #### 3.Create image from the Dockrfile:
 
 ```
-# List the docker images.
+# 1.List the docker images.
 
 ubuntu@balasenapathi:~$ docker images
 REPOSITORY           TAG               IMAGE ID       CREATED        SIZE
@@ -418,7 +419,7 @@ balusena/money_api   latest            1665bedba94e   2 weeks ago    626MB
 python               3.8-slim-buster   52456bc7bf3e   4 weeks ago    118MB
 hello-world          latest            9c7a54a9a43c   2 months ago   13.3kB
 
-# Building a Docker Image Named myvolumeimage with a Volume Specified in Dockerfile.
+# 2.Building a Docker Image Named myvolumeimage with a Volume Specified in Dockerfile.
 
 ubuntu@balasenapathi:~$ docker build -t myvolumeimage .
 Sending build context to Docker daemon  6.026GB
@@ -431,7 +432,7 @@ Removing intermediate container 1ad3feaeec36
 Successfully built d1b35717921f
 Successfully tagged myvolumeimage:latest
 
-# List the docker images.
+# 3.List the docker images.
 
 ubuntu@balasenapathi:~$ docker images
 REPOSITORY           TAG               IMAGE ID       CREATED          SIZE
@@ -445,20 +446,20 @@ hello-world          latest            9c7a54a9a43c   2 months ago     13.3kB
 #### 4.Create a container from "myvolumeimage" docker image:
 
 ```
-# Create a Container from myvolumeimage Docker Image.
+# 1.Create a Container from myvolumeimage Docker Image.
 
 ubuntu-dsbda@ubuntudsbda-virtual-machine:~$ docker run -it --name containerfromimage myvolumeimage sh
 
-# List Root Directory Contents.
+# 2.List Root Directory Contents.
 
 root@b7f4a9d5e8c9:/# ls
 bin  boot  dev  etc  home  lib  lib32  lib64  libx32  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var  volume1
 
-# Change Directory to volume1:
+# 3.Change Directory to volume1:
 
 root@b7f4a9d5e8c9:/# cd volume1
 
-#List Contents of volume1:
+# 4.List Contents of volume1:
 
 root@b7f4a9d5e8c9:/volume1# ls
 ```
@@ -472,20 +473,20 @@ Now, create container4 using the Docker image myvolumeimage which has the volume
 volume from containerfromimage
 
 ```
-# Create container4 using Docker image myvolumeimage which has the volume defined, share volume from containerfromimage.
+# 1.Create container4 using Docker image myvolumeimage which has the volume defined, share volume from containerfromimage.
 
 ubuntu-dsbda@ubuntudsbda-virtual-machine:~$ docker run -it --name container4 --volumes-from containerfromimage ubuntu sh
 
-# List Root Directory Contents:
+# 2.List Root Directory Contents:
 
 root@b8d5c2e1f8b9:/# ls
 bin  boot  dev  etc  home  lib  lib32  lib64  libx32  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var  volume1
 
-# Change Directory to volume1:
+# 3.Change Directory to volume1:
 
 root@b8d5c2e1f8b9:/# cd volume1 
 
-# List Contents of volume1:
+# 4.List Contents of volume1:
 
 root@b8d5c2e1f8b9:/volume1# ls
 ```
@@ -493,24 +494,24 @@ root@b8d5c2e1f8b9:/volume1# ls
 #### 6.Create a file new.js in container4 this gets reflected and mapped in containerfromimage container volume1 directory:
 
 ```
-# Create container4 using Docker image myvolumeimage which has the volume defined, share volume from containerfromimage.
+# 1.Create container4 using Docker image myvolumeimage which has the volume defined, share volume from containerfromimage.
 
 ubuntu-dsbda@ubuntudsbda-virtual-machine:~$ docker run -it --name container4 --volumes-from containerfromimage ubuntu sh
 
-# List Root Directory Contents:
+# 2.List Root Directory Contents:
 
 root@b8d5c2e1f8b9:/# ls
 bin  boot  dev  etc  home  lib  lib32  lib64  libx32  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var  volume1
 
-# Change Directory to volume1:
+# 3.Change Directory to volume1:
 
 root@b8d5c2e1f8b9:/# cd volume1 
 
-# Create a New File new.js:
+# 4.Create a New File new.js:
 
 root@b8d5c2e1f8b9:/volume1# touch new.js
 
-# List Contents of volume1:
+# 5.List Contents of volume1:
 
 root@b8d5c2e1f8b9:/volume1# ls
 new.js
@@ -518,20 +519,20 @@ new.js
 
 #### 7.Verify new.js File reflected in containerfromimage volume1 After created in container4:
 ```
-# Create a Container from myvolumeimage Docker Image.
+# 1.Create a Container from myvolumeimage Docker Image.
 
 ubuntu-dsbda@ubuntudsbda-virtual-machine:~$ docker run -it --name containerfromimage myvolumeimage sh
 
-# List Root Directory Contents.
+# 2.List Root Directory Contents.
 
 root@b7f4a9d5e8c9:/# ls
 bin  boot  dev  etc  home  lib  lib32  lib64  libx32  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var  volume1
 
-# Change Directory to volume1:
+# 3.Change Directory to volume1:
 
 root@b7f4a9d5e8c9:/# cd volume1
 
-#List Contents of volume1:
+# 4.List Contents of volume1:
 
 root@b7f4a9d5e8c9:/volume1# ls
 new.js
