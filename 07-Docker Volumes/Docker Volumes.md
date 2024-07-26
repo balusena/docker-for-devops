@@ -127,3 +127,4 @@ docker run -d -v my-named-volume:/path/in/container --name my-container nginx
 Note: The named volume my-named-volume is used for /path/in/container, and data persists even if the container is removed.
 
 ![Docker Volume Types](https://github.com/balusena/docker-for-devops/blob/main/07-Docker%20Volumes/docker_volume_types.png)
+
