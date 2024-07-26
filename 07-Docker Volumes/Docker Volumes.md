@@ -128,4 +128,19 @@ Note: The named volume my-named-volume is used for /path/in/container, and data 
 
 ![Docker Volume Types](https://github.com/balusena/docker-for-devops/blob/main/07-Docker%20Volumes/docker_volume_types.png)
 
-gtyt
+### Important Points about Docker Volumes
+- Definition: A volume is a directory outside of the container's filesystem that can be mounted inside containers.
+
+- Declaration: You must declare a directory as a volume and then share it.
+
+- Persistence: Volumes persist data even if the container is stopped.
+
+- Creation: Volumes are created independently of containers and can be managed separately.
+
+- Declaration Timing: You declare a directory as a volume when creating a container.
+
+- Limitations: You cannot create a new volume from within an existing container.
+
+- Sharing: One volume can be shared across any number of containers.
+
+- Image Updates: Volumes are not included when updating an image. They remain independent of the image lifecycle.
