@@ -841,6 +841,7 @@ Create a container with an anonymous volume mounted at /data01 inside the contai
 container directory name is specified. On the host system, this volume maps to a randomly hashed directory 
 under /var/lib/docker.
 
+#### 2.Details about the docker command used.
 ```
 docker run -it --name vtwebuat01 -v /data01 nginx /bin/bash
 
@@ -851,12 +852,14 @@ docker run -it --name vtwebuat01 -v /data01 nginx /bin/bash
 nginx               -----> nginx docker image name
 bin/bash            -----> to open bash terminal inside the docker container
 ```
+#### 3.Running a Docker Container Named "vtwebuat01" and volume "/data01" with Ubuntu in Interactive Mode.
+
 ```
 # 1. Running a Docker Container Named "vtwebuat01" Using the "nginx" Image with Volume Mounting in Interactive Bash Mode.
 
 ubuntu@balasenapathi:~$ docker run -it --name vtwebuat01 -v /data01 nginx /bin/bash
 
-# Check Disk Space Usage Inside a Docker Container in a human-readable format such as GB, MB, or KB.
+# 2.Check Disk Space Usage Inside a Docker Container in a human-readable format such as GB, MB, or KB.
 
 root@c28b6020be01:/# df -h
 Filesystem      Size  Used Avail Use% Mounted on
@@ -872,7 +875,83 @@ tmpfs           1.9G     0  1.9G   0% /sys/firmware
 ```
 - Note: A directory has been created /data01 in our container vtwebuat01.
 
+```
+# 3.Now check the running docker containers.
 
+ubuntu@balasenapathi:~$ docker ps -a
+CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS     NAMES
+c28b6020be01   nginx     "/docker-entrypoint.…"   3 minutes ago   Up 3 minutes   80/tcp    vtwebuat01
+```
+
+#### 4.Verifying the Creation of Anonymous Volume with Alphanumeric Identifier in Docker.
+```
+# 1.Checking the Created Anonymous Volume.
+
+ubuntu@balasenapathi:~$ docker volume ls
+DRIVER    VOLUME NAME
+local     5ea756949361110ee48d08ddd320a6aa8956c5986b26aa669e50e45d19a105b7
+```
+- Note: 
+  Now check the volume created, here we are using anonymous volumes, so the volume created is in  
+  alphanumeric and a name is not attached to this volume.
+
+#### 5.Inspecting the Details of the Created Anonymous Volume
+
+```
+# 1.Now inspect the docker volume created.
+
+ubuntu@balasenapathi:~$ docker inspect 5ea756949361110ee48d08ddd320a6aa8956c5986b26aa669e50e45d19a105b7
+[
+    {
+        "CreatedAt": "2024-07-07T04:06:56+05:30",
+        "Driver": "local",
+        "Labels": null,
+        "Mountpoint": "/var/lib/docker/volumes/5ea756949361110ee48d08ddd320a6aa8956c5986b26aa669e50e45d19a105b7/_data",
+        "Name": "5ea756949361110ee48d08ddd320a6aa8956c5986b26aa669e50e45d19a105b7",
+        "Options": null,
+        "Scope": "local"
+    }
+]
+```
+
+#### 6.Creating file3 and file4 in /data01 of "vtwebuat01" and Verifying on Docker Host.
+
+```
+# 1. Running a Docker Container Named "vtwebuat01" Using the "nginx" Image with Volume Mounting in Interactive Bash Mode.
+
+ubuntu@balasenapathi:~$ docker run -it --name vtwebuat01 -v /data01 nginx /bin/bash
+
+# 2.Check Disk Space Usage Inside a Docker Container in a human-readable format such as GB, MB, or KB.
+
+root@c28b6020be01:/# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+overlay          98G   35G   59G  37% /
+tmpfs            64M     0   64M   0% /dev
+tmpfs           1.9G     0  1.9G   0% /sys/fs/cgroup
+shm              64M     0   64M   0% /dev/shm
+/dev/sda5        98G   35G   59G  37% /data01
+tmpfs           1.9G     0  1.9G   0% /proc/asound
+tmpfs           1.9G     0  1.9G   0% /proc/acpi
+tmpfs           1.9G     0  1.9G   0% /proc/scsi
+tmpfs           1.9G     0  1.9G   0% /sys/firmware
+
+# 3.Navigating to /data01 Directory in "vtwebuat01" Container.
+
+root@c28b6020be01:/# cd /data01
+
+# 4.Listing Contents of /data01 Directory in "vtwebuat01" Container.
+
+root@c28b6020be01:/data01# ls
+
+# 5.Creating file3 and file4 in /data01 Directory of "vtwebuat01" Container.
+
+root@c28b6020be01:/data01# touch file3 file4
+
+# 6.Verifying Creation of file3 and file4 in /data01 Directory of "vtwebuat01" Container.
+
+root@c28b6020be01:/data01# ls
+file3  file4
+```
 
 
 
