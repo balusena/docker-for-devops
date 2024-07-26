@@ -771,7 +771,7 @@ root@8ffe7b843b01:/# touch file1 file2
 ubuntu@balasenapathi:~$ docker volume ls
 DRIVER    VOLUME NAME
 
-# 2.Search for the File file1 on the Host:
+# 2.Search for the File "file1" on the Host:
 
 ubuntu@balasenapathi:~$ sudo find / -name file1
 [sudo] password for ubuntu: balasenapathi
@@ -952,6 +952,21 @@ root@c28b6020be01:/data01# touch file3 file4
 root@c28b6020be01:/data01# ls
 file3  file4
 ```
+- Note: This shows that our "file3", "file4" is stored under this volume hence data has mapped.
+
+#### 7.Finding Files Created Inside a Docker Container on the Host.
+
+```
+# 1.List Docker Volumes on the Host.
+ubuntu@balasenapathi:~$ docker volume ls
+DRIVER    VOLUME NAME
+local     5ea756949361110ee48d08ddd320a6aa8956c5986b26aa669e50e45d19a105b7
+
+2.Search for the File "file3" on the Host:
+ubuntu-dsbda@ubuntudsbda-virtual-machine:~$ sudo find / -name file3
+/var/lib/docker/volumes/5ea756949361110ee48d08ddd320a6aa8956c5986b26aa669e50e45d19a105b7/_data/file3
+```
+continue 562 in linux vm
 
 
 
