@@ -795,7 +795,7 @@ CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS       
 ```
 #### 5.Now we are going to exit this container and stop the container.
 
-````
+```
 # 1.Exit from the docker container.
 
 root@8ffe7b843b01:/# exit
