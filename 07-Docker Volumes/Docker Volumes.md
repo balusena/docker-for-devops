@@ -450,7 +450,7 @@ hello-world          latest            9c7a54a9a43c   2 months ago     13.3kB
 ```
 # 1.Create a Container from myvolumeimage Docker Image.
 
-ubuntu-dsbda@ubuntudsbda-virtual-machine:~$ docker run -it --name containerfromimage myvolumeimage sh
+ubuntu@balasenapathi:~$ docker run -it --name containerfromimage myvolumeimage sh
 
 # 2.List Root Directory Contents.
 
@@ -477,7 +477,7 @@ volume from containerfromimage
 ```
 # 1.Create container4 using Docker image myvolumeimage which has the volume defined, share volume from containerfromimage.
 
-ubuntu-dsbda@ubuntudsbda-virtual-machine:~$ docker run -it --name container4 --volumes-from containerfromimage ubuntu sh
+ubuntu@balasenapathi:~$ docker run -it --name container4 --volumes-from containerfromimage ubuntu sh
 
 # 2.List Root Directory Contents.
 
@@ -498,7 +498,7 @@ root@b8d5c2e1f8b9:/volume1# ls
 ```
 # 1.Create container4 using Docker image myvolumeimage which has the volume defined, share volume from containerfromimage.
 
-ubuntu-dsbda@ubuntudsbda-virtual-machine:~$ docker run -it --name container4 --volumes-from containerfromimage ubuntu sh
+ubuntu@balasenapathi:~$ docker run -it --name container4 --volumes-from containerfromimage ubuntu sh
 
 # 2.List Root Directory Contents.
 
@@ -523,7 +523,7 @@ new.js
 ```
 # 1.Create a Container from myvolumeimage Docker Image.
 
-ubuntu-dsbda@ubuntudsbda-virtual-machine:~$ docker run -it --name containerfromimage myvolumeimage sh
+ubuntu@balasenapathi:~$ docker run -it --name containerfromimage myvolumeimage sh
 
 # 2.List Root Directory Contents.
 
@@ -606,7 +606,7 @@ app.js
 ```
 # 1.Running Docker Container h2c with Host Volume h2c-volume.
 
-ubuntu-dsbda@ubuntudsbda-virtual-machine:/home/h2c-volume$ docker run -it --name h2c -v ${PWD}:/myvolume ubuntu sh
+ubuntu@balasenapathi:/home/h2c-volume$ docker run -it --name h2c -v ${PWD}:/myvolume ubuntu sh
 
 # 2.Check Container's Root Directory Contents.
 
@@ -621,6 +621,41 @@ root@d1b35717921f:/# cd myvolume
 
 root@d1b35717921f:/myvolume# ls
 app.js
+```
+
+#### 4.Now create a file new.json in container h2c in myvloume directory.
+
+```
+# 1.Running Docker Container h2c with Host Volume h2c-volume.
+
+ubuntu@balasenapathi:/home/h2c-volume$ docker run -it --name h2c -v ${PWD}:/myvolume ubuntu sh
+
+# 2.Check Container's Root Directory Contents.
+
+root@d1b35717921f:/# ls
+bin  boot  dev	etc  home  lib	lib32  lib64  libx32  media  mnt  myvolume  opt  proc  root  run  sbin srv  sys  tmp  usr  var
+
+# 3.Navigate to the Mounted Volume Directory.
+
+root@d1b35717921f:/# cd myvolume
+
+# 4.Now create new.json in myvolume directory.
+
+root@d1b35717921f:/myvolume# touch new.json
+
+# 5.List Contents of Mounted Volume Directory.
+
+root@d1b35717921f:/myvolume# ls
+app.js  new.json
+```
+
+#### Now verify that new.json file is reflected in host h2c-volume directory.
+
+```
+ubuntu@balasenapathi:/home/h2c-volume$ sudo touch new.json
+[sudo] password for ubuntu-dsbda: balu
+ubuntu-dsbda@ubuntudsbda-virtual-machine:/home/h2c-volume$ ls
+new.json
 ```
 
 
