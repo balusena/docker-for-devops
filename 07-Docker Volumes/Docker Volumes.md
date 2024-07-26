@@ -176,3 +176,18 @@ Volumes can be easily attached and detached from containers, providing flexible 
 
 #### 4.Persistence: 
 Volumes are not deleted when a container is deleted, ensuring data persistence and stability.
+
+## Mapping Volumes in Docker
+This can be done in two ways:
+
+## 1.Container to Container: 
+Volumes can be shared between containers, allowing multiple containers to access and modify the same 
+data. This is particularly useful for shared configurations, databases, or other data that multiple 
+services need to access and manipulate. Sharing volumes in this way facilitates seamless communication 
+and data consistency between related containers.
+
+### 2.Host to Container: 
+Volumes can map directories from the host filesystem to the container, ensuring persistent data storage
+that survives container restarts and deletions. This setup allows data to be easily accessed, managed, 
+and backed up from the host system, providing a robust solution for maintaining critical application data.
+
