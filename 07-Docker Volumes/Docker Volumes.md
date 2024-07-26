@@ -812,7 +812,7 @@ CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS       
 ubuntu-dsbda@ubuntudsbda-virtual-machine:~$ docker rm vtwebint01
 vtwebint01
 ```
-#### 6.Searching for file1 After Deleting the Container vtwebint01.
+#### 4.Searching for file1 After Deleting the Container vtwebint01.
 
 ```
 # 1.Search for the File file1 on the Host After Deleting the Container:.
