@@ -808,6 +808,7 @@ CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS       
 
 # 3.Stop and remove the container:vtwebint01.
 
+```
 ubuntu-dsbda@ubuntudsbda-virtual-machine:~$ docker rm vtwebint01
 vtwebint01
 ```
@@ -826,6 +827,7 @@ find: ‘/run/user/1000/gvfs’: Permission denied
   "file1" does not exist on the host after the container deletion because Docker removed the underlying 
   backend directory that contained file1. This demonstrates the importance of using Docker volumes to
   persist data, ensuring that files remain available even after the container is removed.
+
 
 
 
