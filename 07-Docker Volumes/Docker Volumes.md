@@ -692,7 +692,7 @@ root@d1b35717921f:/myvolume# touch app.py  new.js
 root@d1b35717921f:/myvolume# ls
 app.py  node.js
 
-# 6.Stop and remove the container:h2c:
+# 6.Stop and remove the container:h2c.
 
 ubuntu@balasenapathi:~$ docker rm -f h2c
 h2c
@@ -773,7 +773,7 @@ DRIVER    VOLUME NAME
 
 # 2.Search for the File file1 on the Host:
 
-ubuntu-dsbda@ubuntudsbda-virtual-machine:~$ sudo find / -name file1
+ubuntu@balasenapathi:~$ sudo find / -name file1
 [sudo] password for ubuntu-dsbda: balasenapathi
 /var/lib/docker/overlay2/cd10d8f274ecb023b1cb9a80a3c12fe187d1d19519466730b6d320c432b3b643/diff/file1
 /var/lib/docker/overlay2/cd10d8f274ecb023b1cb9a80a3c12fe187d1d19519466730b6d320c432b3b643/merged/file1
@@ -783,6 +783,49 @@ ubuntu-dsbda@ubuntudsbda-virtual-machine:~$ sudo find / -name file1
   with a unique hash (cd10d8f274ecb023b1cb9a80a3c12fe187d1d19519466730b6d320c432b3b643) subdirectory. 
   This hash directory is part of Docker's overlay filesystem, which tracks changes made in the container 
   compared to the base image.
+
+#### 4.Now check your docker container
+
+```
+# 1.List all the docker containers.
+
+ubuntu@balasenapathi:~$ docker ps
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS     NAMES
+8ffe7b843b01   nginx     "/docker-entrypoint.…"   30 minutes ago   Up 30 minutes   80/tcp    vtwebint01
+```
+#### 5.Now we are going to exit this container and stop this container
+````
+# 1.Exit from the docker container.
+
+root@8ffe7b843b01:/# exit
+exit
+
+# 2.To list the all docker containers.
+
+ubuntu@balasenapathi:~$ docker ps -a
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS                     PORTS     NAMES
+8ffe7b843b01   nginx     "/docker-entrypoint.…"   33 minutes ago   Exited (0) 8 seconds ago             vtwebint01
+
+# 3.Stop and remove the container:vtwebint01.
+
+ubuntu-dsbda@ubuntudsbda-virtual-machine:~$ docker rm vtwebint01
+vtwebint01
+```
+#### 6.Searching for file1 After Deleting the Container vtwebint01.
+
+```
+# 1.Search for the File file1 on the Host After Deleting the Container:.
+
+ubuntu@balasenapathi:~$ sudo find / -name file1
+[sudo] password for ubuntu-dsbda: 
+find: ‘/run/user/1000/doc’: Permission denied
+find: ‘/run/user/1000/gvfs’: Permission denied
+```
+
+- Note: 
+  "file1" does not exist on the host after the container deletion because Docker removed the underlying 
+  backend directory that contained file1. This demonstrates the importance of using Docker volumes to
+  persist data, ensuring that files remain available even after the container is removed.
 
 
 
