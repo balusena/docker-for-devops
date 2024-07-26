@@ -40,6 +40,7 @@ stability of applications that rely on persistent storage.
 Note: CONTAINER sits in HOST operating system(OS)
 
 - HOST [ Physical File System ] path     ===> /home/mount/data
+
 - CONTAINER [ Virtual File System ] path ===> /var/lib/mysql/data 
 
 ## What is a Docker Volume?
@@ -127,3 +128,4 @@ Note: The named volume my-named-volume is used for /path/in/container, and data 
 
 ![Docker Volume Types](https://github.com/balusena/docker-for-devops/blob/main/07-Docker%20Volumes/docker_volume_types.png)
 
+gtyt
