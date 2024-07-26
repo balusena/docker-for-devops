@@ -20,7 +20,7 @@ stored in the host’s filesystem. By using volumes, data can be preserved even 
 started, or removed. This ensures that the database or application data remains intact, allowing the 
 application to maintain its state and operate effectively over time.
 
-Example:
+#### Example to show when we use Docker Volumes:
 
 ### 1.Database Container:
 
@@ -190,4 +190,112 @@ and data consistency between related containers.
 Volumes can map directories from the host filesystem to the container, ensuring persistent data storage
 that survives container restarts and deletions. This setup allows data to be easily accessed, managed, 
 and backed up from the host system, providing a robust solution for maintaining critical application data.
+
+### Example for mapping Volumes in Docker:
+
+#### 1.Container to Container: 
+Volumes can be shared between containers, allowing multiple containers to access and modify the same data.
+
+- Note: Before creating a container see the list of docker images
+
+```
+# To see the list of docker images:
+
+ubuntu@balasenapathi:~$ docker images
+REPOSITORY           TAG               IMAGE ID       CREATED        SIZE
+ubuntu               latest            5a81c4b8502e   7 days ago     77.8MB
+balusena/money_api   latest            1665bedba94e   2 weeks ago    626MB
+python               3.8-slim-buster   52456bc7bf3e   4 weeks ago    118MB
+hello-world          latest            9c7a54a9a43c   2 months ago   13.3kB
+```
+- Note we will use "ubuntu" official docker image for our demonstration purpose.
+
+#### 1.Now create a container1 with volume in it:
+```
+# Run the Docker Container1 with Volume Mount
+
+ubuntu@balasenapathi:~$ docker run -it --name container1 -v /myvolume ubuntu sh
+
+# List Directories in the Container1
+
+root@8ffe7b843b01:/# ls
+
+bin  boot  dev	etc  home  lib	lib32  lib64  libx32  media  mnt  myvolume  opt  proc  root  run  sbin	srv  sys  tmp  usr  var
+
+# Navigate to the Mounted Volume Directory in container1
+
+root@8ffe7b843b01:/# cd myvolume
+
+# List Contents of the Mounted Volume in container1
+
+root@8ffe7b843b01:/# ls
+```
+
+#### 2.Now create another container2 using volumes from container1
+```
+# Run a Docker Container2 with Volume from Container1
+
+ubuntu@balasenapathi:~$ docker run -it --name container2 --volumes-from container1 ubuntu sh
+
+# List Directories in the Container2
+
+root@6rvc9s246v03:/# ls
+
+bin  boot  dev	etc  home  lib	lib32  lib64  libx32  media  mnt  myvolume  opt  proc  root  run  sbin	srv  sys  tmp  usr  var
+
+# Navigate to the Mounted Volume Directory in Container2
+
+root@6rvc9s246v03:/# cd myvolume
+
+# List Contents of the Mounted Volume in Container2
+
+root@6rvc9s246v03:/# ls
+```
+
+#### 3.Now we are inside the container2 and if we create app.js in myvolume then it gets reflected in container1 myvolume directory
+
+```
+# Start the Container2 with Volume from the Container1
+
+ubuntu@balasenapathi:~$ docker run -it --name container2 --volumes-from container1 ubuntu sh
+
+# List Directories in the Container2
+
+root@6rvc9s246v03:/# ls
+bin  boot  dev	etc  home  lib	lib32  lib64  libx32  media  mnt  myvolume  opt  proc  root  run  sbin srv  sys  tmp  usr  var
+
+# Navigate to the Mounted Volume Directory in Container2
+
+root@6rvc9s246v03:/# cd myvolume
+
+# List Contents of the Mounted Volume in Container2
+
+root@6rvc9s246v03:/# ls
+
+# Create a New File in the Volume in Container2
+
+root@6rvc9s246v03:/# touch app.js
+
+# Verify the New File "app.js" was created in Mounted Volume in Container2
+
+root@6rvc9s246v03:/# ls
+app.js
+```
+- Verfication:
+  Now, if we go to container1 and do ls in the myvolume directory, we can see app.js reflected in container1.
+  This shows that both containers are mapped by using Docker volumes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
