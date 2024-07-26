@@ -93,7 +93,7 @@ Managed by the host system.
 When you need direct access to host files, such as configuration files or code repositories.
 
 ```
-# Run a container with a bind mount
+# 1.Run a container with a bind mount
 
 ubuntu@balasenapathi:~$ docker run -d -v /path/on/host:/path/in/container --name my-container nginx
 ```
@@ -112,9 +112,10 @@ Managed by Docker, but the volume is given a random name.
 Temporary storage for data that doesn't need to be named or reused after the container is removed.
 
 ```
-# Run a container with an anonymous volume
+# 2.Run a container with an anonymous volume
 
 ubuntu@balasenapathi:~$ docker run -d -v /path/in/container --name my-container nginx
+
 ```
 Note: Docker automatically creates a volume and mounts it to /path/in/container inside the container.
 
@@ -127,12 +128,13 @@ Managed by Docker and can be easily referenced and reused by name.
 Persistent storage that needs to be retained across multiple container instances and easily shared among containers.
 
 ```
-# Create a named volume
+# 3.Create a named volume
 docker volume create my-named-volume
 
-# Run a container with the named volume
+# 3.Run a container with the named volume
 docker run -d -v my-named-volume:/path/in/container --name my-container nginx
 ```
+
 Note: The named volume my-named-volume is used for /path/in/container, and data persists even if the container is removed.
 
 ![Docker Volume Types](https://github.com/balusena/docker-for-devops/blob/main/07-Docker%20Volumes/docker_volume_types.png)
@@ -211,6 +213,7 @@ hello-world          latest            9c7a54a9a43c   2 months ago   13.3kB
 - Note we will use "ubuntu" official docker image for our demonstration purpose.
 
 #### 1.Now create a container1 with volume in it:
+
 ```
 # Run the Docker Container1 with Volume Mount
 
@@ -231,7 +234,8 @@ root@8ffe7b843b01:/# cd myvolume
 root@8ffe7b843b01:/# ls
 ```
 
-#### 2.Now create another container2 using volumes from container1
+#### 2.Now create another container2 using volumes from container1:
+
 ```
 # Run a Docker Container2 with Volume from Container1
 
@@ -252,7 +256,7 @@ root@6rvc9s246v03:/# cd myvolume
 root@6rvc9s246v03:/# ls
 ```
 
-#### 3.Now we are inside the container2 and if we create app.js in myvolume then it gets reflected in container1 myvolume directory
+#### 3.Now we are inside the container2 and if we create app.js in myvolume then it gets reflected in container1 myvolume directory:
 
 ```
 # Start the Container2 with Volume from the Container1
@@ -281,7 +285,8 @@ root@6rvc9s246v03:/# touch app.js
 root@6rvc9s246v03:/# ls
 app.js
 ```
-### 4.Verification: Now navigate to container1 and verify that app.js is reflected from Container2
+
+### 4.Verification: Now navigate to container1 and verify that app.js is reflected from Container2:
 
 ```
 # Run the Docker Container1 with Volume Mount
@@ -303,10 +308,11 @@ root@8ffe7b843b01:/# cd myvolume
 root@8ffe7b843b01:/# ls
 app.js
 ```
+
 Now, if we go to container1 and do ls in the myvolume directory, we can see app.js reflected in container1.
 This shows that both containers are mapped by using Docker volumes.
 
-### 5.Mapping Container1 Volume with Multiple Containers.
+### 5.Mapping Container1 Volume with Multiple Containers:
 
 - Now, create container3, using volumes from container1 because we have created a volume in container1.
 
@@ -338,9 +344,11 @@ root@c3nft579ner3:/myvolume# touch package.json
 root@c3nft579ner3:/myvolume# ls
 app.js  package.json
 ```
-### 6.Check container1, container2 where file "package.json" created in container3 mapped with the 2 containers.
+
+### 6.Check container1, container2 where file "package.json" created in container3 mapped with the 2 containers:
  
 - Verifying in Container1:
+
 ```
 # Run the Docker Container1 with Volume Mount
 
@@ -361,7 +369,9 @@ root@8ffe7b843b01:/# cd myvolume
 root@8ffe7b843b01:/# ls
 app.js	package.json
 ```
+
 - Verifying in Container2:
+- 
 ```
 # Start the Container2 with Volume from the Container1
 
@@ -383,19 +393,21 @@ app.js	package.json
 ```
 - Note: We can confirm that the file "package.json" created in container3 is visible in both Container1 and Container2 as well.
 
-### 7.Creating a volume by using Dockerfile
+### 7.Creating a volume by using Dockerfile:
 
-#### Clone this repository and move to example folder
+#### 1.Clone this repository and move to example folder:
 ```
 git clone https://github.com/balusena/docker-for-devops.git
 cd  07-Docker Volumes/examples
 ```
-#### Dockerfile
+#### 2.Dockerfile:
 ```
 FROM ubuntu
 VOLUME ["/volume1"]
 ```
-#### Create image from the Dockrfile
+
+#### 3.Create image from the Dockrfile:
+
 ```
 # List the docker images.
 
@@ -429,7 +441,9 @@ balusena/money_api   latest            1665bedba94e   2 weeks ago      626MB
 python               3.8-slim-buster   52456bc7bf3e   4 weeks ago      118MB
 hello-world          latest            9c7a54a9a43c   2 months ago     13.3kB
 ```
-#### Create a container from "myvolumeimage" docker image.
+
+#### 4.Create a container from "myvolumeimage" docker image:
+
 ```
 # Create a Container from myvolumeimage Docker Image.
 
@@ -448,10 +462,12 @@ root@b7f4a9d5e8c9:/# cd volume1
 
 root@b7f4a9d5e8c9:/volume1# ls
 ```
+
 - Note:
   You can notice that we have not added the -v flag in the docker run command because we have already declared the volume inside the Dockerfile while creating the Docker image, i.e., myvolumeimage. The volume specified in the Dockerfile is automatically included when creating a container from this image.
 
-#### Share volume with other containers (Container to container)
+#### 5.Share volume with other containers (Container to container):
+
 Now, create container4 using the Docker image myvolumeimage which has the volume defined, and share the 
 volume from containerfromimage
 
@@ -474,14 +490,9 @@ root@b8d5c2e1f8b9:/# cd volume1
 root@b8d5c2e1f8b9:/volume1# ls
 ```
 
-#### Create a file new.js in container4 this gets reflected and mapped in containerfromimage container volume1 directory
+#### 6.Create a file new.js in container4 this gets reflected and mapped in containerfromimage container volume1 directory:
+
 ```
-
-# ls
-# touch new.js
-# ls
-new.js
-
 # Create container4 using Docker image myvolumeimage which has the volume defined, share volume from containerfromimage.
 
 ubuntu-dsbda@ubuntudsbda-virtual-machine:~$ docker run -it --name container4 --volumes-from containerfromimage ubuntu sh
@@ -504,7 +515,8 @@ root@b8d5c2e1f8b9:/volume1# touch new.js
 root@b8d5c2e1f8b9:/volume1# ls
 new.js
 ```
-#### Verify new.js File reflected in containerfromimage volume1 After created in container4.
+
+#### 7.Verify new.js File reflected in containerfromimage volume1 After created in container4:
 ```
 # Create a Container from myvolumeimage Docker Image.
 
@@ -524,8 +536,34 @@ root@b7f4a9d5e8c9:/# cd volume1
 root@b7f4a9d5e8c9:/volume1# ls
 new.js
 ```
+
 - Note:
   The new.js file created in container4 is successfully reflected in the volume1 directory of 
   containerfromimage. This confirms that volumes are correctly shared across containers.
 
-asadd
+
+#### 2.Host to Container:
+Volumes can map directories from the host filesystem to the container.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
