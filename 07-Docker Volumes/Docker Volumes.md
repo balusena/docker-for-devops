@@ -740,7 +740,7 @@ f46d7b05649a: Pull complete
 Digest: sha256:08bc36ad52474e528cc1ea3426b5e3f4bad8a130318e3140d6cfe29c8892c7ef
 Status: Downloaded newer image for nginx:latest
 
-# Check Disk Space Usage Inside a Docker Container in a human-readable format such as GB, MB, or KB.
+# 4.Check Disk Space Usage Inside a Docker Container in a human-readable format such as GB, MB, or KB.
 
 root@8ffe7b843b01:/# df -h                       
 Filesystem      Size  Used Avail Use% Mounted on
@@ -828,6 +828,54 @@ find: ‘/run/user/1000/gvfs’: Permission denied
   "file1" does not exist on the host after the container deletion because Docker removed the underlying 
   backend directory that contained file1. This demonstrates the importance of using Docker volumes to
   persist data, ensuring that files remain available even after the container is removed.
+
+#### Docker has 3 options for containers to store files in the host machine, ensuring that files persist even after the container stops:
+
+- Docker Volume Types:
+  - 1.Anonymous Volumes (also known as None or Nameless Volumes)
+  - 2.Named Volumes (also known as Managed Volumes)
+  - 3.Host Volumes (also known as Bind Mounts)
+
+#### 1.Anonymous Volumes:
+Create a container with an anonymous volume mounted at /data01 inside the container. In this case, only the 
+container directory name is specified. On the host system, this volume maps to a randomly hashed directory 
+under /var/lib/docker.
+
+```
+docker run -it --name vtwebuat01 -v /data01 nginx /bin/bash
+
+-it                 -----> interactive terminal
+--name vtwebuat01   -----> name of the container vtwebuat01
+-v                  -----> volume flag to decalre volume
+/data01             -----> directory name mapping into the container
+nginx               -----> nginx docker image name
+bin/bash            -----> to open bash terminal inside the docker container
+```
+```
+# 1. Running a Docker Container Named "vtwebuat01" Using the "nginx" Image with Volume Mounting in Interactive Bash Mode.
+
+ubuntu@balasenapathi:~$ docker run -it --name vtwebuat01 -v /data01 nginx /bin/bash
+
+# Check Disk Space Usage Inside a Docker Container in a human-readable format such as GB, MB, or KB.
+
+root@c28b6020be01:/# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+overlay          98G   35G   59G  37% /
+tmpfs            64M     0   64M   0% /dev
+tmpfs           1.9G     0  1.9G   0% /sys/fs/cgroup
+shm              64M     0   64M   0% /dev/shm
+/dev/sda5        98G   35G   59G  37% /data01
+tmpfs           1.9G     0  1.9G   0% /proc/asound
+tmpfs           1.9G     0  1.9G   0% /proc/acpi
+tmpfs           1.9G     0  1.9G   0% /proc/scsi
+tmpfs           1.9G     0  1.9G   0% /sys/firmware
+```
+- Note: A directory has been created /data01 in our container vtwebuat01.
+
+
+
+
+
 
 
 
