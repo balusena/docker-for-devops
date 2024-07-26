@@ -338,7 +338,8 @@ root@c3nft579ner3:/myvolume# touch package.json
 root@c3nft579ner3:/myvolume# ls
 app.js  package.json
 ```
-### 6.Now check container1 and container2 where updated file "package.json" created in container3 mapped with all 3 containers
+### 6.Now check container1 and container2 where updated file "package.json" created in container3 mapped 
+      with all 3 containers
  
 - Verifying in Container1:
 ```
