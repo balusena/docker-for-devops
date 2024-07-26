@@ -40,7 +40,7 @@ stability of applications that rely on persistent storage.
 Note: CONTAINER sits in HOST operating system(OS)
 
 - HOST [ Physical File System ] path ===> /home/mount/data
-- 
+
 - CONTAINER [ Virtual File System ] path ===> /var/lib/mysql/data 
 
 ## What is a Docker Volume?
