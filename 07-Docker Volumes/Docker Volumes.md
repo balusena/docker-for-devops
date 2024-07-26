@@ -281,10 +281,106 @@ root@6rvc9s246v03:/# touch app.js
 root@6rvc9s246v03:/# ls
 app.js
 ```
-- Verfication:
-  Now, if we go to container1 and do ls in the myvolume directory, we can see app.js reflected in container1.
-  This shows that both containers are mapped by using Docker volumes.
+### 4.Verification: Now navigate to container1 and verify that app.js is reflected from Container2
 
+```
+# Run the Docker Container1 with Volume Mount
+
+ubuntu-dsbda@ubuntudsbda-virtual-machine:~$ docker run -it --name container1 -v /myvolume ubuntu sh
+  
+# List Directories in the Container1
+
+root@8ffe7b843b01:/# ls
+
+bin  boot  dev	etc  home  lib	lib32  lib64  libx32  media  mnt  myvolume  opt  proc  root  run  sbin	srv  sys  tmp  usr  var
+
+# Navigate to the Mounted Volume Directory in container1
+
+root@8ffe7b843b01:/# cd myvolume
+
+# List Contents of the Mounted Volume in container1
+
+root@8ffe7b843b01:/# ls
+app.js
+```
+Now, if we go to container1 and do ls in the myvolume directory, we can see app.js reflected in container1.
+This shows that both containers are mapped by using Docker volumes.
+
+### 5.Mapping Container1 Volume with Multiple Containers.
+
+- Now, create container3, using volumes from container1 because we have created a volume in container1.
+
+```
+# Run Container3 Using Volumes from Container1
+
+ubuntu@balasenapathi:~$ docker run -it --name container3 --volumes-from container1 ubuntu sh
+
+# List Root Directory Contents in Container3
+
+root@c3nft579ner3:/# ls
+bin  boot  dev	etc  home  lib	lib32  lib64  libx32  media  mnt  myvolume  opt  proc  root 
+
+# Change Directory to myvolume in Container3
+
+root@c3nft579ner3:/# cd myvolume
+
+#List Contents of myvolume in Container3
+
+root@c3nft579ner3:/myvolume# ls
+app.js
+
+# Create a New File in myvolume in Container3
+
+root@c3nft579ner3:/myvolume# touch package.json
+
+# List Updated Contents of myvolume in Container3
+
+root@c3nft579ner3:/myvolume# ls
+app.js  package.json
+```
+### 6.Now check container1 and container2 to see the updated file package.json created in container3 mapped with all 3 containers
+- Verifying in Container1:
+```
+# Run the Docker Container1 with Volume Mount
+
+ubuntu@balasenapathi:~$ docker run -it --name container1 -v /myvolume ubuntu sh
+
+# List Directories in the Container1
+
+root@8ffe7b843b01:/# ls
+
+bin  boot  dev	etc  home  lib	lib32  lib64  libx32  media  mnt  myvolume  opt  proc  root  run  sbin	srv  sys  tmp  usr  var
+
+# Navigate to the Mounted Volume Directory in container1
+
+root@8ffe7b843b01:/# cd myvolume
+
+# List Contents of the Mounted Volume in container1
+
+root@8ffe7b843b01:/# ls
+app.js	package.json
+```
+- Verifying in Container2:
+```
+# Start the Container2 with Volume from the Container1
+
+ubuntu@balasenapathi:~$ docker run -it --name container2 --volumes-from container1 ubuntu sh
+
+# List Directories in the Container2
+
+root@6rvc9s246v03:/# ls
+bin  boot  dev	etc  home  lib	lib32  lib64  libx32  media  mnt  myvolume  opt  proc  root  run  sbin srv  sys  tmp  usr  var
+
+# Navigate to the Mounted Volume Directory in Container2
+
+root@6rvc9s246v03:/# cd myvolume
+
+# List Contents of the Mounted Volume in Container2
+
+root@6rvc9s246v03:/# ls
+app.js	package.json
+```
+- Note: We can confirm that the file "package.json" created in container3 is visible in both Container1 and Container2 as well.
 
 
 
