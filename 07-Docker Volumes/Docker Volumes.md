@@ -139,28 +139,40 @@ Note: The named volume my-named-volume is used for /path/in/container, and data 
 
 ### Important Points about Docker Volumes
 
-- Definition: A volume is a directory outside of the container's filesystem that can be mounted inside containers.
+#### Definition: 
+A volume is a directory outside of the container's filesystem that can be mounted inside containers.
 
-- Declaration: You must declare a directory as a volume and then share it.
+#### Declaration: 
+You must declare a directory as a volume and then share it.
 
-- Persistence: Volumes persist data even if the container is stopped.
+#### Persistence: 
+Volumes persist data even if the container is stopped.
 
-- Creation: Volumes are created independently of containers and can be managed separately.
+#### Creation: 
+Volumes are created independently of containers and can be managed separately.
 
-- Declaration Timing: You declare a directory as a volume when creating a container.
+#### Declaration Timing: 
+You declare a directory as a volume when creating a container.
 
-- Limitations: You cannot create a new volume from within an existing container.
+#### Limitations: 
+You cannot create a new volume from within an existing container.
 
-- Sharing: One volume can be shared across any number of containers.
+#### Sharing: 
+One volume can be shared across any number of containers.
 
-- Image Updates: Volumes are not included when updating an image. They remain independent of the image lifecycle.
+#### Image Updates: 
+Volumes are not included when updating an image. They remain independent of the image lifecycle.
 
 ### Benefits of Volumes
 
-- Decoupling Storage: Volumes decouple storage from the container, allowing data to persist independently of the container's lifecycle.
+#### Decoupling Storage: 
+Volumes decouple storage from the container, allowing data to persist independently of the container's lifecycle.
 
-- Sharing: Volumes can be shared among different containers, facilitating data sharing and coordination.
+#### Sharing: 
+Volumes can be shared among different containers, facilitating data sharing and coordination.
 
-- Attachment: Volumes can be easily attached and detached from containers, providing flexible data management.
+#### Attachment: 
+Volumes can be easily attached and detached from containers, providing flexible data management.
 
-- Persistence: Volumes are not deleted when a container is deleted, ensuring data persistence and stability.
+#### Persistence: 
+Volumes are not deleted when a container is deleted, ensuring data persistence and stability.
