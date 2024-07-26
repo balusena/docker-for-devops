@@ -293,7 +293,7 @@ app.js
 ```
 # 1.Run the Docker Container1 with Volume Mount.
 
-ubuntu-dsbda@ubuntudsbda-virtual-machine:~$ docker run -it --name container1 -v /myvolume ubuntu sh
+ubuntu@balasenapathi:~$  docker run -it --name container1 -v /myvolume ubuntu sh
   
 # 2.List Directories in the Container1.
 
@@ -550,7 +550,7 @@ Volumes can map directories from the host filesystem to the container.
 
 #### 1.Create a container with volume shared from host:
 
-- Now lets create another directory
+- Now let's create another directory
 
 ```
 # 1.List all the files and directories.
@@ -573,7 +573,7 @@ ubuntu@balasenapathi:/home$ sudo mkdir h2c-volume
 # 4.List all the files and directories.
 
 ubuntu@balasenapathi:/home$ ls
-devops  h2c-volume  hdoop  ubuntu-dsbda
+devops  h2c-volume  hdoop  ubuntu
 
 # 5.Navigate to the h2c-volume directory.
 
@@ -774,7 +774,7 @@ DRIVER    VOLUME NAME
 # 2.Search for the File file1 on the Host:
 
 ubuntu@balasenapathi:~$ sudo find / -name file1
-[sudo] password for ubuntu-dsbda: balasenapathi
+[sudo] password for ubuntu: balasenapathi
 /var/lib/docker/overlay2/cd10d8f274ecb023b1cb9a80a3c12fe187d1d19519466730b6d320c432b3b643/diff/file1
 /var/lib/docker/overlay2/cd10d8f274ecb023b1cb9a80a3c12fe187d1d19519466730b6d320c432b3b643/merged/file1
 ```
@@ -817,7 +817,7 @@ vtwebint01
 # 1.Search for the File file1 on the Host After Deleting the Container:.
 
 ubuntu@balasenapathi:~$ sudo find / -name file1
-[sudo] password for ubuntu-dsbda: 
+[sudo] password for ubuntu: balasenapathi
 find: ‘/run/user/1000/doc’: Permission denied
 find: ‘/run/user/1000/gvfs’: Permission denied
 ```
