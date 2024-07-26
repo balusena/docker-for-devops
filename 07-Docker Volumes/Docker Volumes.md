@@ -129,6 +129,7 @@ Note: The named volume my-named-volume is used for /path/in/container, and data 
 ![Docker Volume Types](https://github.com/balusena/docker-for-devops/blob/main/07-Docker%20Volumes/docker_volume_types.png)
 
 ### Important Points about Docker Volumes
+
 - Definition: A volume is a directory outside of the container's filesystem that can be mounted inside containers.
 
 - Declaration: You must declare a directory as a volume and then share it.
@@ -144,3 +145,13 @@ Note: The named volume my-named-volume is used for /path/in/container, and data 
 - Sharing: One volume can be shared across any number of containers.
 
 - Image Updates: Volumes are not included when updating an image. They remain independent of the image lifecycle.
+
+### Benefits of Volumes
+
+- Decoupling Storage: Volumes decouple storage from the container, allowing data to persist independently of the container's lifecycle.
+
+- Sharing: Volumes can be shared among different containers, facilitating data sharing and coordination.
+
+- Attachment: Volumes can be easily attached and detached from containers, providing flexible data management.
+
+- Persistence: Volumes are not deleted when a container is deleted, ensuring data persistence and stability.
