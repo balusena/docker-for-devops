@@ -545,6 +545,82 @@ new.js
 #### 2.Host to Container:
 Volumes can map directories from the host filesystem to the container.
 
+#### 1.Create a container with volume shared from host:
+
+- Now lets create another directory
+
+```
+# 1.List all the files and directories.
+
+ubuntu@balasenapathi:~$ ls
+Desktop             Dockers-ML-Flask-App  hello_file.ipynb                 Pictures                       pythonprograms
+devops_balu_github  Documents             learnlinux                       prometheus-2.44.0.linux-amd64  snap
+Dockerfile          Downloads             Music                            Public                         Templates
+docker_flask        hadoopMyFiles         node_exporter-1.6.0.linux-amd64  PycharmProjects                Videos
+
+# 2.Change to the home directory.
+
+ubuntu@balasenapathi:~$ cd ..
+
+# 3.Create h2c-volume in your home directory using sudo user to get all permissions to the file.
+
+ubuntu@balasenapathi:/home$ sudo mkdir h2c-volume
+[sudo] password for ubuntu: balasenapathi # <Provide your Root Password>
+
+# 4.List all the files and directories.
+
+ubuntu@balasenapathi:/home$ ls
+devops  h2c-volume  hdoop  ubuntu-dsbda
+
+# 5.Navigate to the h2c-volume directory.
+
+ubuntu@balasenapathi:/home$ cd h2c-volume
+
+# 6.Check the present working directory
+
+ubuntu@balasenapathi:/home/h2c-volume$ pwd
+/home/h2c-volume
+
+# 7.List all the files and directories.
+
+ubuntu@balasenapathi:/home/h2c-volume$ ls
+```
+
+#### 2.Now create a file app.js in /home/h2c-volume directory
+
+```
+# 1.Create file app.js in h2c-volume directory.
+
+ubuntu@balasenapathi:/home/h2c-volume$ sudo touch app.js
+
+# 2.List all the files and directories.
+
+ubuntu@balasenapathi:/home/h2c-volume$ ls
+app.js
+```
+#### 3.Creating Docker Container "h2c" with Host Volume "h2c-volume"
+
+```
+# 1.Running Docker Container h2c with Host Volume h2c-volume
+
+ubuntu-dsbda@ubuntudsbda-virtual-machine:/home/h2c-volume$ docker run -it --name h2c -v ${PWD}:/myvolume ubuntu sh
+
+# 2.Check Container's Root Directory Contents:
+
+root@d1b35717921f:/# ls
+bin  boot  dev	etc  home  lib	lib32  lib64  libx32  media  mnt  myvolume  opt  proc  root  run  sbin srv  sys  tmp  usr  var
+
+# 3.Navigate to the Mounted Volume Directory:
+
+root@d1b35717921f:/# cd myvolume
+
+# 4.List Contents of Mounted Volume Directory:
+
+root@d1b35717921f:/myvolume# ls
+app.js
+```
+
+
 
 
 
