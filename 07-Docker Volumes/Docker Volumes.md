@@ -828,6 +828,7 @@ find: ‘/run/user/1000/gvfs’: Permission denied
   backend directory that contained file1. This demonstrates the importance of using Docker volumes to
   persist data, ensuring that files remain available even after the container is removed.
 
+23456
 
 
 
