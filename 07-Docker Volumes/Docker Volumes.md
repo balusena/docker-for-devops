@@ -712,7 +712,77 @@ app.py  node.js
 
 ### Example for Docker Volume types:
 
-1.
+#### 1.Create a container without using any volumes and the container uses the docker host as the default directory.
+
+```
+# 1.List All the Docker Containers
+
+ubuntu@balasenapathi:~$ docker ps -a
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+# 2.List All the Docker Volumes
+
+ubuntu@balasenapathi:~$ docker volume ls
+DRIVER    VOLUME NAME
+
+# 3.Run an Nginx Container Interactively with Bash
+
+ubuntu@balasenapathi:~$ docker run -it --name vtwebint01 nginx /bin/bash
+Unable to find image 'nginx:latest' locally
+latest: Pulling from library/nginx
+faef57eae888: Pull complete
+76579e9ed380: Pull complete
+cf707e233955: Pull complete
+91bb7937700d: Pull complete
+4b962717ba55: Pull complete
+f46d7b05649a: Pull complete
+103501419a0a: Pull complete
+Digest: sha256:08bc36ad52474e528cc1ea3426b5e3f4bad8a130318e3140d6cfe29c8892c7ef
+Status: Downloaded newer image for nginx:latest
+
+# Check Disk Space Usage Inside a Docker Container in a human-readable format such as GB, MB, or KB.
+
+root@8ffe7b843b01:/# df -h                       
+Filesystem      Size  Used Avail Use% Mounted on
+overlay          98G   35G   59G  37% /
+tmpfs            64M     0   64M   0% /dev
+tmpfs           1.9G     0  1.9G   0% /sys/fs/cgroup
+shm              64M     0   64M   0% /dev/shm
+/dev/sda5        98G   35G   59G  37% /etc/hosts
+tmpfs           1.9G     0  1.9G   0% /proc/asound
+tmpfs           1.9G     0  1.9G   0% /proc/acpi
+tmpfs           1.9G     0  1.9G   0% /proc/scsi
+tmpfs           1.9G     0  1.9G   0% /sys/firmware
+```
+
+#### 2.Creating "file1", "file2" Files Inside a Docker Container and Locating Them on the Docker Host.
+
+```
+# 1.Creating files inside the docker container.
+ 
+root@8ffe7b843b01:/# touch file1 file2
+```
+
+#### 3.Finding Files Created Inside a Docker Container on the Host.
+
+```
+# 1.List Docker Volumes on the Host.
+
+ubuntu@balasenapathi:~$ docker volume ls
+DRIVER    VOLUME NAME
+
+# 2.Search for the File file1 on the Host:
+
+ubuntu-dsbda@ubuntudsbda-virtual-machine:~$ sudo find / -name file1
+[sudo] password for ubuntu-dsbda: balasenapathi
+/var/lib/docker/overlay2/cd10d8f274ecb023b1cb9a80a3c12fe187d1d19519466730b6d320c432b3b643/diff/file1
+/var/lib/docker/overlay2/cd10d8f274ecb023b1cb9a80a3c12fe187d1d19519466730b6d320c432b3b643/merged/file1
+```
+- Note: 
+  The file file1 created inside the Docker container is stored on the host under the directory /var/lib/docker/overlay2/
+  with a unique hash (cd10d8f274ecb023b1cb9a80a3c12fe187d1d19519466730b6d320c432b3b643) subdirectory. 
+  This hash directory is part of Docker's overlay filesystem, which tracks changes made in the container 
+  compared to the base image.
 
 
 
