@@ -836,7 +836,7 @@ find: ‘/run/user/1000/gvfs’: Permission denied
   - 2.Named Volumes (also known as Managed Volumes)
   - 3.Host Volumes (also known as Bind Mounts)
 
-#### 1.Anonymous Volumes:
+### 1.Anonymous Volumes:
 Create a container with an anonymous volume mounted at /data01 inside the container. In this case, only the 
 container directory name is specified. On the host system, this volume maps to a randomly hashed directory 
 under /var/lib/docker.
@@ -958,15 +958,61 @@ file3  file4
 
 ```
 # 1.List Docker Volumes on the Host.
+
 ubuntu@balasenapathi:~$ docker volume ls
 DRIVER    VOLUME NAME
 local     5ea756949361110ee48d08ddd320a6aa8956c5986b26aa669e50e45d19a105b7
 
-2.Search for the File "file3" on the Host:
+2.Search for the File "file3" on the Host.
+
 ubuntu-dsbda@ubuntudsbda-virtual-machine:~$ sudo find / -name file3
 /var/lib/docker/volumes/5ea756949361110ee48d08ddd320a6aa8956c5986b26aa669e50e45d19a105b7/_data/file3
 ```
-continue 562 in linux vm
+#### 8.Now exit from container "vtwebuat01" and delete it.
+
+```
+# 1.Existing from docker container vtwebuat01.
+
+root@c28b6020be01:/data01# exit
+exit
+
+# 2.To list all the docker images.
+
+ubuntu@balasenapathi:~$ docker ps -a
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS                      PORTS     NAMES
+c28b6020be01   nginx     "/docker-entrypoint.…"   28 minutes ago   Exited (0) 23 seconds ago             vtwebuat01
+
+# 3.Stoping and deleteing the docker container "vtwebuat01"
+ubuntu@balasenapathi:~$ docker rm vtwebuat01
+vtwebuat01
+```
+#### 9.Finding Files Created Inside a Docker Container on the Host.
+
+```
+# 1.List Docker Volumes on the Host.
+
+ubuntu@balasenapathi:~$ docker volume ls
+DRIVER    VOLUME NAME
+local     5ea756949361110ee48d08ddd320a6aa8956c5986b26aa669e50e45d19a105b7
+
+2.Search for the File "file3" on the Host.
+
+ubuntu-dsbda@ubuntudsbda-virtual-machine:~$ sudo find / -name file3
+/var/lib/docker/volumes/5ea756949361110ee48d08ddd320a6aa8956c5986b26aa669e50e45d19a105b7/_data/file3
+```
+- Note: 
+  Docker volumes preserve data even after containers are deleted. For instance, when container "vtwebuat01"
+  was removed, files file3 and file4 remained intact because they were stored in a Docker volume, ensuring 
+  data is not lost.
+
+#### 10.Drawbacks of Anonymous Volumes:
+
+Anonymous volumes lack a user-defined name, making it challenging to trace where the data is stored. 
+Docker automatically generates an alphanumeric hash for these volumes, leading to directories like 
+"/var/lib/docker/volumes/hash-code/_data/file3". This can complicate data management and is not 
+recommended for production environments. To address this issue, named volumes should be used, as they 
+provide more control and clarity.
+
 
 
 
