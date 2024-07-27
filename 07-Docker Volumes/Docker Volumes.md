@@ -1195,7 +1195,8 @@ root@d2e2d7f7b735:/data01#
 - 1.Using Btrfs File System:
 
 ```
-docker volume create --name vtuatdb02_data3 --opt o=size=100m --opt device=/data3 --opt type=btrfs
+ubuntu@balasenapathi:~$ docker volume create --name vtuatdb02_data3 --opt o=size=100m --opt device=/data3 --opt type=btrfs
+vtuatdb02_data3
 ```
 In this command, we're creating a named volume named "vtuatdb02_data3" with a size of 100MB and using 
 the /data3 device.The "--opt type=btrfs" option specifies that the volume should be created with the 
@@ -1211,7 +1212,8 @@ Btrfs file system type.
 - 2.Using Tmpfs File System:
 
 ```
-docker volume create --name vtuatdb02_data3 --opt o=size=100m --opt device=/data3 --opt type=tmpfs
+ubuntu@balasenapathi:~$ docker volume create --name vtuatdb02_data3 --opt o=size=100m --opt device=/data3 --opt type=tmpfs
+vtuatdb02_data3
 ```
 In this command, we're creating a named volume named "vtuatdb02_data3" with a size of 100MB using the 
 tmpfs file system type. This creates a temporary file system in memory.
