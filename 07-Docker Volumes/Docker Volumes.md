@@ -1181,7 +1181,7 @@ root@d2e2d7f7b735:/#
 
 # 3.Navigating to /data01 Directory in "vtuatweb03" Container.
 
-root@c89bb6895a93:/# cd /data01
+root@d2e2d7f7b735:/# cd /data01
 root@d2e2d7f7b735:/data01#
 ```
 - Note: 
