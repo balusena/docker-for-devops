@@ -842,6 +842,7 @@ container directory name is specified. On the host system, this volume maps to a
 under /var/lib/docker.
 
 #### 2.Details about the docker command used.
+
 ```
 docker run -it --name vtwebuat01 -v /data01 nginx /bin/bash
 
@@ -1013,6 +1014,181 @@ Docker automatically generates an alphanumeric hash for these volumes, leading t
 recommended for production environments. To address this issue, named volumes should be used, as they 
 provide more control and clarity.
 
+### 2.Named Volumes:
+Create a container "vtwebuat02" with a named volume mounted at /data01 within the container. The volume 
+name will be vtwebuat02_data01_val, making it easier to identify and manage.
+
+#### 2.Details about the docker command used.
+
+```
+docker run -it --name vtwebuat02 -v vtwebuat02_data01_val:/data01 nginx /bin/bash
+
+-it                            -----> interactive terminal
+--name vtwebuat02              -----> name of the container vtwebuat02
+-v                             -----> volume flag to decalre volume
+vtwebuat02_data01_val          -----> name of the volume vtwebuat02_data01_val
+/data01                        -----> directory name mapping into the container
+nginx                          -----> nginx docker image name
+bin/bash                       -----> to open bash terminal inside the docker container
+```
+#### 3.Running a Docker Container Named "vtwebuat02" and volume "/data01" with Ubuntu in Interactive Mode.
+
+```
+# 1. Running a Docker Container Named "vtwebuat02" Using the "nginx" Image with Volume Mounting in Interactive Bash Mode.
+
+ubuntu@balasenapathi:~$ docker run -it --name vtwebuat02 -v vtwebuat02_data01_val:/data01 nginx /bin/bash
+
+# 2.Check Disk Space Usage Inside a Docker Container in a human-readable format such as GB, MB, or KB.
+
+root@c89bb6895a93:/# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+overlay          98G   34G   59G  37% /
+tmpfs            64M     0   64M   0% /dev
+tmpfs           1.9G     0  1.9G   0% /sys/fs/cgroup
+shm              64M     0   64M   0% /dev/shm
+/dev/sda5        98G   34G   59G  37% /data01
+tmpfs           1.9G     0  1.9G   0% /proc/asound
+tmpfs           1.9G     0  1.9G   0% /proc/acpi
+tmpfs           1.9G     0  1.9G   0% /proc/scsi
+tmpfs           1.9G     0  1.9G   0% /sys/firmware
+```
+- Note: A directory has been created /data01 in our container vtwebuat02.
+
+```
+# 3.Now check the running docker containers.
+
+ubuntu@balasenapathi:~$ docker ps -a
+CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS     NAMES
+c89bb6895a93   nginx     "/docker-entrypoint.…"   3 minutes ago   Up 3 minutes   80/tcp    vtwebuat02
+```
+#### 4.Verifying the Creation of Named Volume with name "vtwebuat02_data01_val" in Docker.
+```
+# 1.Checking the Created Named Volume.
+
+ubuntu@balasenapathi:~$ docker volume ls
+DRIVER    VOLUME NAME
+local     vtwebuat02_data01_val
+```
+- Note:
+  The volume listed "vtwebuat02_data01_val" is a named volume. Unlike anonymous volumes, named volumes 
+  have a user-defined name, making them easier to identify and manage.
+
+#### 5.Creating file5 and file6 in /data01 of "vtwebuat02" and Verifying on Docker Host.
+
+```
+# 1. Running a Docker Container Named "vtwebuat02" Using the "nginx" Image with Volume Mounting in Interactive Bash Mode.
+
+ubuntu@balasenapathi:~$ docker run -it --name vtwebuat02 -v vtwebuat02_data01_val:/data01 nginx /bin/bash
+
+# 2.Check Disk Space Usage Inside a Docker Container in a human-readable format such as GB, MB, or KB.
+
+root@c89bb6895a93:/# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+overlay          98G   34G   59G  37% /
+tmpfs            64M     0   64M   0% /dev
+tmpfs           1.9G     0  1.9G   0% /sys/fs/cgroup
+shm              64M     0   64M   0% /dev/shm
+/dev/sda5        98G   34G   59G  37% /data01
+tmpfs           1.9G     0  1.9G   0% /proc/asound
+tmpfs           1.9G     0  1.9G   0% /proc/acpi
+tmpfs           1.9G     0  1.9G   0% /proc/scsi
+tmpfs           1.9G     0  1.9G   0% /sys/firmware
+
+# 3.Navigating to /data01 Directory in "vtwebuat02" Container.
+
+root@c89bb6895a93:/# cd /data01
+
+# 4.Listing Contents of /data01 Directory in "vtwebuat02" Container.
+
+root@c89bb6895a93:/data01# ls
+
+# 5.Creating file5 and file6 in /data01 Directory of "vtwebuat02" Container.
+
+root@c89bb6895a93:/data01# touch file5 file6
+
+# 6.Verifying Creation of file5 and file6 in /data01 Directory of "vtwebuat02" Container.
+
+root@c89bb6895a93:/data01# ls
+file5  file6
+```
+- Note: This shows that our "file5", "file6" is stored under this volume hence data has mapped.
+
+#### 6.Finding Files Created Inside a Docker Container on the Host.
+
+```
+# 1.List Docker Volumes on the Host.
+
+ubuntu@balasenapathi:~$ docker volume ls
+DRIVER    VOLUME NAME
+local     vtwebuat02_data01_val
+
+2.Search for the File "file5" on the Host.
+
+ubuntu@balasenapathi:~$ sudo find / -name file5
+/var/lib/docker/volumes/vtwebuat02_data01_val/_data/file5
+```
+
+#### 7.Now exit from container "vtwebuat02" and delete it.
+
+```
+# 1.Existing from docker container vtwebuat02.
+
+root@c89bb6895a93:/data01# exit
+exit
+
+# 2.To list all the docker images.
+
+ubuntu@balasenapathi:~$ docker ps -a
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS                      PORTS     NAMES
+c89bb6895a93   nginx     "/docker-entrypoint.…"   28 minutes ago   Exited (0) 23 seconds ago             vtwebuat02
+
+# 3.Stoping and deleteing the docker container "vtwebuat02"
+ubuntu@balasenapathi:~$ docker rm vtwebuat02
+vtwebuat02
+```
+#### 8.Finding Files Created Inside a Docker Container on the Host.
+
+```
+# 1.List Docker Volumes on the Host.
+
+ubuntu@balasenapathi:~$ docker volume ls
+DRIVER    VOLUME NAME
+local     vtwebuat02_data01_val
+
+2.Search for the File "file5" on the Host.
+
+ubuntu@balasenapathi:~$ sudo find / -name file5
+/var/lib/docker/volumes/vtwebuat02_data01_val/_data/file5
+```
+- Note:
+  Docker volumes preserve data even after containers are deleted. For instance, when container "vtwebuat02"
+  was removed, files file5 and file6 remained intact because they were stored in a Docker volume, ensuring
+  data is not lost.
+
+#### 1.Create a Named Volume and Attach It to a Container.
+
+```
+# 1.Create a named volume.
+
+ubuntu@balasenapathi:~$ docker volume create vtuatweb03_data01_vol
+vtuatweb03_data01_vol
+
+# 2.Run the docker conatiner with named volume.
+
+ubuntu@balasenapathi:~$ docker run -it --name vtuatweb03 -v vtuatweb03_data01_vol:/data01 nginx /bin/bash
+
+root@d2e2d7f7b735:/#
+
+# 3.Navigating to /data01 Directory in "vtuatweb03" Container.
+
+root@c89bb6895a93:/# cd /data01
+root@d2e2d7f7b735:/data01#
+```
+- Note: 
+  In this we first create a named volume "vtuatweb03_data01_vol", then attach this volume to the 
+  container’s "/data01" directory. If you use a command with a different volume name that does not 
+  exist, Docker will automatically create a new named volume with that name. If the volume already 
+  exists, Docker will attach the existing volume.
 
 
 
