@@ -1208,8 +1208,18 @@ Btrfs file system type.
     range of use cases. However, it's worth noting that while Btrfs is stable and widely used, it is still
     considered "production-ready" but not yet part of the mainline Linux kernel.
 
+- 2.Using Tmpfs File System:
 
+```
+docker volume create --name vtuatdb02_data3 --opt o=size=100m --opt device=/data3 --opt type=tmpfs
+```
+In this command, we're creating a named volume named "vtuatdb02_data3" with a size of 100MB using the 
+tmpfs file system type. This creates a temporary file system in memory.
 
+- Note:
+  - The tmpfs file system is suitable for scenarios where you want to allocate a specific amount of memory
+    as a volume.
+  - Data stored in tmpfs volumes will be lost once the container using the volume is stopped or removed.
 
 
 
