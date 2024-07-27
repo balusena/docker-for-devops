@@ -1190,6 +1190,25 @@ root@d2e2d7f7b735:/data01#
   exist, Docker will automatically create a new named volume with that name. If the volume already 
   exists, Docker will attach the existing volume.
 
+#### 2.Create a Named Volume with Size
+
+- 1.Using Btrfs File System:
+
+```
+docker volume create --name vtuatdb02_data3 --opt o=size=100m --opt device=/data3 --opt type=btrfs
+```
+In this command, we're creating a named volume named "vtuatdb02_data3" with a size of 100MB and using 
+the /data3 device. The --opt type=btrfs option specifies that the volume should be created with the 
+Btrfs file system type.
+
+- Note:
+  - Ensure that the Btrfs file system is installed and available on your host system before running this command.
+  - The /data3 directory should exist on your host system.
+  - Btrfs is known for its flexibility, scalability, and advanced features, making it suitable for a wide 
+    range of use cases. However, it's worth noting that while Btrfs is stable and widely used, it is still
+    considered "production-ready" but not yet part of the mainline Linux kernel.
+
+
 
 
 
