@@ -1198,7 +1198,7 @@ root@d2e2d7f7b735:/data01#
 docker volume create --name vtuatdb02_data3 --opt o=size=100m --opt device=/data3 --opt type=btrfs
 ```
 In this command, we're creating a named volume named "vtuatdb02_data3" with a size of 100MB and using 
-the /data3 device. The --opt type=btrfs option specifies that the volume should be created with the 
+the /data3 device.The "--opt type=btrfs" option specifies that the volume should be created with the 
 Btrfs file system type.
 
 - Note:
