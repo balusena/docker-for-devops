@@ -1224,6 +1224,33 @@ tmpfs file system type. This creates a temporary file system in memory.
   - Data stored in tmpfs volumes will be lost once the container using the volume is stopped or removed.
 
 
+### 3.Hosted Volumes:
+In host volumes, we don't create any volumes within Docker. Instead, we create a directory or file on our 
+host system and map this directory or file to a directory within the container.
+
+#### 1.Create a host volume.
+
+```
+1. Change Directory to /opt
+
+ubuntu@balasenapathi:~$ cd /opt
+
+2. Create a Directory Named data02
+
+ubuntu@balasenapathi:/opt$ sudo mkdir data02
+[sudo] password for ubuntu: balasenapathi
+
+3. Verify the Directory Creation
+
+ubuntu@balasenapathi:/opt$ ls
+containerd  data02  google
+
+Change Permissions of the Directory
+
+ubuntu@balasenapathi:/opt$ sudo chmod 777 data02
+
+```
+- Note: This means that anyone can read, write, and execute files within the data02 directory.
 
 
 
@@ -1236,9 +1263,7 @@ tmpfs file system type. This creates a temporary file system in memory.
 
 
 
-
-
-
+    
 
 
 
