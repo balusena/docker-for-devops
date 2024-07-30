@@ -1370,11 +1370,11 @@ file7 file8 file9
 Bind Mounts (Host Volumes): This is like NFS and also we can use the same directory with another 
 container, so that we can share the data among different containers.
 
-- We rarely use anonymous volumes in production because they don't provide proper references.
+- 1.We rarely use anonymous volumes in production because they don't provide proper references.
 
-- We mostly use named volumes in production.
+- 2.We mostly use named volumes in production.
 
-- We use host volumes or bind mounts if we want to share the data among different containers.
+- 3.We use host volumes or bind mounts if we want to share the data among different containers.
 
 
 
