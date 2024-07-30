@@ -1367,7 +1367,6 @@ root@de4fceccedd1:/data02# ls
 file7 file8 file9
 ```
 - Note:
-
 Bind Mounts (Host Volumes): This is like NFS and also we can use the same directory with another 
 container, so that we can share the data among different containers.
 
