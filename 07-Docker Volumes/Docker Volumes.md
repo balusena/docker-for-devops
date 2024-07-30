@@ -1223,9 +1223,8 @@ tmpfs file system type. This creates a temporary file system in memory.
     as a volume.
   - Data stored in tmpfs volumes will be lost once the container using the volume is stopped or removed.
 
-
-### 3.Hosted Volumes:
-In host volumes, we don't create any volumes within Docker. Instead, we create a directory or file on our 
+### 3.Hosted Volumes
+In host volumes, we don't create any volumes within Docker. Instead, we create a directory or file on our
 host system and map this directory or file to a directory within the container.
 
 #### 1.Create a host volume.
@@ -1303,8 +1302,81 @@ de4fceccedd1   nginx     "/docker-entrypoint.…"   2 minutes ago   Up About a m
 
 ubuntu@balasenapathi:~$ docker volume ls
 DRIVER    VOLUME NAME
-local     vtwebuat02_data01_val
+
 ```
+- Note: Here by using the host volumes it wont create any volume but uses the directory of the docker host machine.
+
+
+#### 5.Creating file7 and file8 in /data01 of "vtwebuat03" and Verifying on Docker Host.
+
+```
+# 1.Navigating to /data02 Directory in "vtwebuat03" Container.
+
+root@de4fceccedd1:/# cd /data02
+
+# 4.Listing Contents of /data02 Directory in "vtwebuat03" Container.
+
+root@de4fceccedd1:/data02# ls
+
+# 5.Creating file7 and file8 in /data02 Directory of "vtwebuat02" Container.
+
+root@de4fceccedd1:/data02# touch file7 file8
+
+# 6.Verifying Creation of file7 and file8 in /data02 Directory of "vtwebuat03" Container.
+
+root@de4fceccedd1:/data01# ls
+file7  file8
+```
+- Note: This shows that our "file7", "file8" is stored under this volume hence data has mapped.
+
+#### 6.Check docker host machine and see whether file7 file8 are reflected here from container directory.
+```
+# 1.Navigate to the "data02" Directory on the Host Machine.
+
+ubuntu@balasenapathi:/opt$ cd data02
+
+# 2.List the Contents of the "data02" Directory.
+
+ubuntu@balasenapathi:/opt/data02$ ls
+
+# 3.Verify the Presence of "file7" and "file8".
+
+ubuntu@balasenapathi:/opt/data02$ ls
+
+file7  file8
+```
+
+#### 7.Now create file in host directory and see whether they are reflected in docker container
+```
+# 1.Creating file "file9" in host directory "/data02".
+
+ubuntu@balasenapathi:/opt/data02$ touch file9
+
+# 2.Running a Docker Container Named "vtwebuat03" Using the "nginx" Image with Volume Mounting in Interactive Bash Mode.
+
+ubuntu@balasenapathi:~$ docker run -it --name vtwebuat03 -v /opt/data02:/data02 nginx /bin/bash
+
+# 3.Now navigate to your docker container "/data02" directory and check for file "file9"
+
+root@de4fceccedd1:/# cd /data02
+
+# 4.Listing Contents of /data02 Directory in "vtwebuat03" Container.
+
+root@de4fceccedd1:/data02# ls
+
+file7 file8 file9
+```
+- Note:
+
+Bind Mounts (Host Volumes): This is like NFS and also we can use the same directory with another 
+container, so that we can share the data among different containers.
+
+- We rarely use anonymous volumes in production because they don't provide proper references.
+
+- We mostly use named volumes in production.
+
+- We use host volumes or bind mounts if we want to share the data among different containers.
+
 
 
 
