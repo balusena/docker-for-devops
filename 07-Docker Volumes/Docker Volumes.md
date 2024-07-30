@@ -1252,7 +1252,59 @@ ubuntu@balasenapathi:/opt$ sudo chmod 777 data02
 ```
 - Note: This means that anyone can read, write, and execute files within the data02 directory.
 
+#### 2.Details about the docker command used.
 
+```
+docker run -it --name vtwebuat03 -v /opt/data02:/data02 nginx /bin/bash
+
+-it                            -----> interactive terminal
+--name vtwebuat03              -----> name of the container vtwebuat03
+-v                             -----> volume flag to decalre volume
+opt/data02                     -----> directory name created in host machine mapping to directory /data02 in container vtwebuat03 
+/data02                        -----> directory name of container vtwebuat03 
+nginx                          -----> nginx docker image name
+bin/bash                       -----> to open bash terminal inside the docker container
+```
+
+#### 3.Running a Docker Container Named "vtwebuat03" and volume "/data02" with Ubuntu in Interactive Mode.
+
+```
+# 1. Running a Docker Container Named "vtwebuat03" Using the "nginx" Image with Volume Mounting in Interactive Bash Mode.
+
+ubuntu@balasenapathi:~$ docker run -it --name vtwebuat03 -v /opt/data02:/data02 nginx /bin/bash
+
+# 2.Check Disk Space Usage Inside a Docker Container in a human-readable format such as GB, MB, or KB.
+
+root@de4fceccedd1:/# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+overlay          98G   35G   59G  37% /
+tmpfs            64M     0   64M   0% /dev
+tmpfs           1.9G     0  1.9G   0% /sys/fs/cgroup
+shm              64M     0   64M   0% /dev/shm
+/dev/sda5        98G   35G   59G  37% /data02
+tmpfs           1.9G     0  1.9G   0% /proc/asound
+tmpfs           1.9G     0  1.9G   0% /proc/acpi
+tmpfs           1.9G     0  1.9G   0% /proc/scsi
+tmpfs           1.9G     0  1.9G   0% /sys/firmware
+```
+- Note: A directory has been created /data02 in our container vtwebuat02.
+
+```
+# 3.Now check the running docker containers.
+
+ubuntu@balasenapathi:~$ docker ps -a
+CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS              PORTS     NAMES
+de4fceccedd1   nginx     "/docker-entrypoint.…"   2 minutes ago   Up About a minute   80/tcp    vtwebuat03
+```
+#### 4.Finding Files Created Inside a Docker Container on the Host.
+
+```
+# 1.List Docker Volumes on the Host.
+
+ubuntu@balasenapathi:~$ docker volume ls
+DRIVER    VOLUME NAME
+local     vtwebuat02_data01_val
+```
 
 
 
