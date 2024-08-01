@@ -84,8 +84,8 @@ Here are some of the differences between Docker Compose and Docker Swarm:
 
 3. **Using PIP**  
    If you have Python and PIP installed, you can install Docker Compose with the following command:
-   ```
-   pip install -U docker-compose
-   ```
+```
+pip install -U docker-compose
+```
    
 
