@@ -56,6 +56,7 @@ Overlay networks are used for multi-host communication and container orchestrati
 
 The "none" network is a special network type where containers are not connected to any network. Containers in this network type are isolated and cannot communicate with other containers or external systems.
 
+**Note:**
 These network types offer different functionalities and features to cater to various deployment scenarios 
 and requirements. Choosing the appropriate network type depends on factors such as network isolation needs, 
 performance, communication across multiple hosts, and direct connectivity with external systems.
