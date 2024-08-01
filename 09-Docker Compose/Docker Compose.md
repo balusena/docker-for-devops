@@ -64,6 +64,9 @@ Here are some of the differences between Docker Compose and Docker Swarm:
 
 ![Docker Compose vs Swarn](https://github.com/balusena/docker-for-devops/blob/main/09-Docker%20Compose/docker_compose_swarn.png)
 
-
+- **YAML file**
+  YAML(a recursive acronym for "YAML Yet Another Markup Language") is a human-readable data-serialization 
+  language. It is commonly used for configuration files and in applications where data is being stored or 
+  transmitted.
 
 
