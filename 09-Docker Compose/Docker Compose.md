@@ -69,4 +69,23 @@ Here are some of the differences between Docker Compose and Docker Swarm:
   language. It is commonly used for configuration files and in applications where data is being stored or 
   transmitted.
 
+## Installing Docker Compose
+
+**Step 1: Install Docker Compose**
+
+**3 Installation Methods:**
+
+1. **From Windows**
+   (Docker Compose is already included with Docker Desktop on Windows and macOS. To check if it's installed, 
+   run: `docker-compose -v`)
+
+2. **From GitHub**  
+   Download the latest version of Docker Compose from the [official GitHub releases page](https://github.com/docker/compose/releases). Follow the instructions provided there for installation.
+
+3. **Using PIP**  
+   If you have Python and PIP installed, you can install Docker Compose with the following command:
+   ```
+   pip install -U docker-compose
+   ```
+   
 
