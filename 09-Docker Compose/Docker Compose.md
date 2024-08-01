@@ -98,7 +98,7 @@ ubuntu@balasenapathi:~$ sudo apt install docker-compose
 ubuntu@balasenapathi:~$ docker-compose -v
 docker-compose version 1.25.0, build unknown
 
-# 3. Check Docker Compose Detailed Version Information.
+# 3.Check Docker Compose Detailed Version Information.
 
 ubuntu@balasenapathi:~$ docker-compose version
 docker-compose version 1.25.0, build unknown
@@ -206,7 +206,7 @@ To expose your host machine’s port "8081" to the web server’s port "80", upd
 file as follows:
 
 ```
-#1.Edit the Docker Compose File:**
+# 1.Edit the Docker Compose File:**
 
 ubuntu@balasenapathi:~/DockerComposeFile$ nano docker-compose.yml
 version: '3'
@@ -273,12 +273,12 @@ CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 
 ## Scale Services with Docker Compose
 
-**1. Define and Run Multi-Container Applications.**
+**1.Define and Run Multi-Container Applications.**
 
 Docker Compose allows you to define and run multi-container applications. You can scale services using 
 the `--scale` option.
 
-**2. Scale the Database Service.**
+**2.Scale the Database Service.**
 
 To scale the database service (Redis) to 4 instances, use the following command:
 
@@ -289,7 +289,7 @@ ubuntu@balasenapathi:~/DockerComposeFile$ docker-compose up -d --scale database=
   In this example, you are scaling the Redis database service to 4 containers, while the Nginx web service
   remains unchanged.
 
-**3. View the Running Containers.**
+**3.View the Running Containers.**
 
 After scaling, check the running containers:
 
