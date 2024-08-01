@@ -200,6 +200,137 @@ Removing dockercomposefile_web_1      ... done
 Removing dockercomposefile_database_1 ... done
 Removing network dockercomposefile_default
 ```
+## Expose Host Machine Port to Web Server Port
+
+To expose your host machine’s port "8081" to the web server’s port "80", update the `docker-compose.yml` 
+file as follows:
+
+```
+#1.Edit the Docker Compose File:**
+
+ubuntu@balasenapathi:~/DockerComposeFile$ nano docker-compose.yml
+version: '3'
+
+services:
+  
+  web:
+    image: nginx
+    ports:
+      - 8081:80
+    
+  database:
+    image: redis
+
+# 2.Validate and View Docker Compose Configuration.    
+
+ubuntu@balasenapathi:~/DockerComposeFile$ docker-compose config
+services:
+  database:
+    image: redis
+  web:
+    image: nginx
+    ports:
+    - 8081:80/tcp
+version: '3.0'
+
+# 3.Start Docker Compose Services in Detached Mode.
+
+ubuntu@balasenapathi:~/DockerComposeFile$ docker-compose up -d
+Creating network "dockercomposefile_default" with the default driver
+Creating dockercomposefile_database_1 ... done
+Creating dockercomposefile_web_1      ... done
+
+# 4.Now check the list of containers in docker.
+
+ubuntu@balasenapathi:~/DockerComposeFile$ docker ps -a
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                                   NAMES
+7d39b51be1e2   nginx     "/docker-entrypoint.…"   46 seconds ago   Up 43 seconds   0.0.0.0:8081->80/tcp, :::8081->80/tcp   dockercomposefile_web_1
+9fcb4d31a80f   redis     "docker-entrypoint.s…"   46 seconds ago   Up 42 seconds   6379/tcp                                dockercomposefile_database_1
+
+# 5.Now go to your localhost:8081 or 127.0.0.1:8081 
+
+Welcome to nginx!
+If you see this page, the nginx web server is successfully installed and working. Further configuration is required.
+
+For online documentation and support please refer to nginx.org.
+Commercial support is available at nginx.com.
+
+Thank you for using nginx.
+
+# 6.Stop and Remove Docker Compose Services.
+ubuntu@balasenapathi:~/DockerComposeFile$ docker-compose down
+Stopping dockercomposefile_web_1      ... done
+Stopping dockercomposefile_database_1 ... done
+Removing dockercomposefile_web_1      ... done
+Removing dockercomposefile_database_1 ... done
+Removing network dockercomposefile_default
+
+# 7.Now check the list of containers in docker.
+
+ubuntu@balasenapathi:~/DockerComposeFile$ docker ps -a
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+```
+
+## Scale Services with Docker Compose
+
+**1. Define and Run Multi-Container Applications.**
+
+Docker Compose allows you to define and run multi-container applications. You can scale services using 
+the `--scale` option.
+
+**2. Scale the Database Service.**
+
+To scale the database service (Redis) to 4 instances, use the following command:
+
+```
+ubuntu@balasenapathi:~/DockerComposeFile$ docker-compose up -d --scale database=4
+```
+- Note: 
+  In this example, you are scaling the Redis database service to 4 containers, while the Nginx web service
+  remains unchanged.
+
+**3. View the Running Containers.**
+
+After scaling, check the running containers:
+
+```
+ubuntu@balasenapathi:~/DockerComposeFile$ docker ps
+CONTAINER ID   IMAGE     COMMAND                  CREATED              STATUS              PORTS       NAMES
+7f059f552b0f   redis     "docker-entrypoint.s…"   About a minute ago   Up 59 seconds       6379/tcp   dockercomposefile_database_3
+c79343045fcb   redis     "docker-entrypoint.s…"   About a minute ago   Up About a minute   6379/tcp   dockercomposefile_database_1
+9cb418395d69   redis     "docker-entrypoint.s…"   About a minute ago   Up 59 seconds       6379/tcp   dockercomposefile_database_4
+8503a7bc4494   redis     "docker-entrypoint.s…"   About a minute ago   Up About a minute   6379/tcp   dockercomposefile_database_2
+1266410cf4dc   nginx     "/docker-entrypoint.…"   About a minute ago   Up About a minute   0.0.0.0:8081->80/tcp, :::8081->80/tcp   dockercomposefile_web_1
+
+```
+**4.Stop and Remove Containers.**
+
+To stop and remove all containers and networks, use the following command:
+
+```
+ubuntu@balasenapathi:~/DockerComposeFile$ docker-compose down
+Stopping dockercomposefile_database_3 ... done
+Stopping dockercomposefile_database_1 ... done
+Stopping dockercomposefile_database_4 ... done
+Stopping dockercomposefile_database_2 ... done
+Stopping dockercomposefile_web_1      ... done
+Removing dockercomposefile_database_3 ... done
+Removing dockercomposefile_database_1 ... done
+Removing dockercomposefile_database_4 ... done
+Removing dockercomposefile_database_2 ... done
+Removing dockercomposefile_web_1      ... done
+Removing network dockercomposefile_default
+```
+**5.Verify All Containers Are Stopped.**
+
+After running docker-compose down, check to ensure no containers are running:
+
+```
+ubuntu@balasenapathi:~/DockerComposeFile$  docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+```
+
+
 
 
 
