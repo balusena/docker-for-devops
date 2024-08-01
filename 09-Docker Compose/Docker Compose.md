@@ -108,7 +108,6 @@ OpenSSL version: OpenSSL 1.1.1f  31 Mar 2020
 ```
 
 **Step 2 : Create docker compose file at any location on your system.**
-docker-compose.yml
 
 ```
 # 1.Create and Edit a Docker Compose File.
@@ -147,7 +146,6 @@ database:
 image: redis
 ```
 **Step 3 : Check the validity of file by command**
-docker-compose config
 
 ```
 # 1.Validate and View Docker Compose Configuration.
