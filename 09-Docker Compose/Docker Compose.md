@@ -45,6 +45,25 @@ together without needing to start each container separately.
 
 ![Docker Compose YAML](https://github.com/balusena/docker-for-devops/blob/main/09-Docker%20Compose/docker_yaml.png)
 
+## Benefits of Docker Compose
+
+1. **Single host deployment**
+   This means you can run everything on a single piece of hardware.
+
+2. **Quick and easy configuration**
+   Due to YAML scripts.
+
+3. **High productivity**
+   Docker Compose reduces the time it takes to perform tasks.
+
+4. **Security**
+   All the containers are isolated from each other, reducing the threat landscape.
+
+Now, you might be thinking that Docker Compose is quite similar to Docker Swarm, but that’s not the case. 
+Here are some of the differences between Docker Compose and Docker Swarm:
+
+![Docker Compose vs Swarn](https://github.com/balusena/docker-for-devops/blob/main/09-Docker%20Compose/docker_compose_swarn.png)
+
 
 
 
