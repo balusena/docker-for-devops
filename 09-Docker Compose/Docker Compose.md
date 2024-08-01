@@ -36,3 +36,15 @@ commands, you can manage the entire lifecycle of your application and its depend
 and reproducible manner.
 
 ![Docker Compose LifeCycle](https://github.com/balusena/docker-for-devops/blob/main/09-Docker%20Compose/docker_compose_lifecycle.png)
+
+For example:
+
+If your application requires both an NGINX server and a Redis database, you can create a Docker Compose 
+file to manage and run both containers as services. This allows you to start and manage both services 
+together without needing to start each container separately.
+
+![Docker Compose YAML](https://github.com/balusena/docker-for-devops/blob/main/09-Docker%20Compose/docker_yaml.png)
+
+
+
+
