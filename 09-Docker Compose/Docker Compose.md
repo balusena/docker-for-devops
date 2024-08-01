@@ -87,5 +87,136 @@ Here are some of the differences between Docker Compose and Docker Swarm:
    ```
    pip install -U docker-compose
    ```
-   
+```
+# 1.Install Docker Compose on Ubuntu. 
+
+ubuntu@balasenapathi:~$ sudo apt install docker-compose
+[sudo] password for ubuntu: balasenapathi
+
+# 2.Verify Docker Compose Installation.
+
+ubuntu@balasenapathi:~$ docker-compose -v
+docker-compose version 1.25.0, build unknown
+
+# 3. Check Docker Compose Detailed Version Information.
+
+ubuntu@balasenapathi:~$ docker-compose version
+docker-compose version 1.25.0, build unknown
+docker-py version: 4.1.0
+CPython version: 3.8.10
+OpenSSL version: OpenSSL 1.1.1f  31 Mar 2020
+```
+
+**Step 2 : Create docker compose file at any location on your system.**
+docker-compose.yml
+
+```
+# 1.Create and Edit a Docker Compose File.
+
+ubuntu@balasenapathi:~$ mkdir DockerComposeFile
+
+# 2.Navigate to the New Directory.
+
+ubuntu@balasenapathi:~$ cd DockerComposeFile/
+
+# 3.Create a Docker Compose YAML File.
+ubuntu@balasenapathi:~/DockerComposeFile$ touch docker-compose.yml
+
+# 4.Edit the Docker Compose YAML File.
+ubuntu@balasenapathi:~/DockerComposeFile$ nano docker-compose.yml
+
+# 5.View the Content of the Docker Compose YAML File.
+
+ubuntu@balasenapathi:~/DockerComposeFile$ cat docker-compose.yml
+version: '3'
+services:
+
+web:
+image: nginx
+
+database:
+image: redis
+```
+**Step 3 : Check the validity of file by command**
+docker-compose config
+
+```
+# 1.Validate and View Docker Compose Configuration.
+
+ubuntu@balasenapathi:~/DockerComposeFile$ docker-compose config
+services:
+database:
+image: redis
+web:
+image: nginx
+version: '3.0'
+```
+
+**Step 4: Run the Docker Compose YAML File in Detached Mode**
+```
+# 1.Start Docker Compose Services in Detached Mode.
+
+ubuntu@balasenapathi:~/DockerComposeFile$ docker-compose up -d
+Creating network "dockercomposefile_default" with the default driver
+Pulling database (redis:)...
+latest: Pulling from library/redis
+faef57eae888: Already exists
+bb595d48e52d: Pull complete
+d479b54c3bb2: Pull complete
+2044989c541a: Pull complete
+01e4ba5495fa: Pull complete
+ed7a9fd4b0ea: Pull complete
+Digest: sha256:08a82d4bf8a8b4dd94e8f5408cdbad9dd184c1cf311d34176cd3e9972c43f872
+Status: Downloaded newer image for redis:latest
+Creating dockercomposefile_database_1 ... done
+Creating dockercomposefile_web_1      ... done
+```
+
+**Note**
+The above command starts the services defined in the docker-compose.yml file, creating the necessary
+containers and networks. The output indicates that Docker Compose has successfully pulled the required 
+images and created the containers.
+
+- Always run `docker-compose up` from the directory where the `docker-compose.yml` file is located.
+
+```
+# 2.Now check the list of containers in docker.
+
+ubuntu@balasenapathi:~/DockerComposeFile$ docker ps -a
+CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS      NAMES
+e749e9acfc04   nginx     "/docker-entrypoint.…"   3 minutes ago   Up 2 minutes   80/tcp     dockercomposefile_web_1
+5b007ea3173f   redis     "docker-entrypoint.s…"   3 minutes ago   Up 2 minutes   6379/tcp   dockercomposefile_database_1
+```
+
+**Steps 5: Bring down application by command**
+
+```
+# 1.Stop and Remove Docker Compose Services.
+
+ubuntu@balasenapathi:~/DockerComposeFile$ docker-compose down
+Stopping dockercomposefile_web_1      ... done
+Stopping dockercomposefile_database_1 ... done
+Removing dockercomposefile_web_1      ... done
+Removing dockercomposefile_database_1 ... done
+Removing network dockercomposefile_default
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
