@@ -37,7 +37,7 @@ and reproducible manner.
 
 ![Docker Compose LifeCycle](https://github.com/balusena/docker-for-devops/blob/main/09-Docker%20Compose/docker_compose_lifecycle.png)
 
-For example:
+- For example:
 
 If your application requires both an NGINX server and a Redis database, you can create a Docker Compose 
 file to manage and run both containers as services. This allows you to start and manage both services 
