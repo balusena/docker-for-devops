@@ -124,6 +124,15 @@ ubuntu@balasenapathi:~/DockerComposeFile$ touch docker-compose.yml
 
 # 4.Edit the Docker Compose YAML File.
 ubuntu@balasenapathi:~/DockerComposeFile$ nano docker-compose.yml
+version: '3'
+
+services:
+  
+  web:
+    image: nginx
+    
+  database:
+    image: redis
 
 # 5.View the Content of the Docker Compose YAML File.
 
