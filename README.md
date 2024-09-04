@@ -320,7 +320,7 @@
    - Container to Container
    - Host to Container
    
-   -Example for Mapping Volumes in Docker
+   - Example for Mapping Volumes in Docker
       - Container to Container
       - Host to Container
 
