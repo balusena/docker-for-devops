@@ -280,6 +280,56 @@
 
 6. **Summary**
 
+## 7: Docker Volumes
+1. **When Do We Need Docker Volumes**
+   - Use Case:
+   - Example to show when we use Docker Volumes:
+       - Database Container
+       - Stateful Applications
+
+2. **What is a Docker Volume?**
+   - Volume Mapping
+   - Data Synchronization
+   - Data Persistence
+
+3. **Docker Volume Types**
+   - Host Volumes (Bind Mounts)
+   - Anonymous Volumes
+   - Named Volumes (Managed Volumes)
+
+4. **Summary of Differences**
+
+5. **Important Points about Docker Volumes**
+   - Definition:
+   - Declaration:
+   - Persistence:
+   - Creation:
+   - Declaration Timing:
+   - Limitations:
+   - Sharing:
+   - Image Updates:
+
+6. **Benefits of Volumes**
+   - Decoupling
+   - Storage
+   - Sharing
+   - Attachment
+   - Persistence
+
+7. **Mapping Volumes in Docker**
+   - Container to Container
+   - Host to Container
+   
+   -Example for Mapping Volumes in Docker
+      - Container to Container
+      - Host to Container
+
+8. **Docker Volume Types**
+   - Anonymous Volumes (also known as None or Nameless Volumes)
+   - Named Volumes (also known as Managed Volumes)
+   - Host Volumes (also known as Bind Mounts)
+
+
 
 
 
