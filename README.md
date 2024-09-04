@@ -198,64 +198,63 @@
 8. **Explanation of the Access Logs**
 
 ## 5: Docker Lifecycle
-
 1. **Docker Lifecycle**
 
 2. **Summary of these states before we deep dive into it**
-   - 1. Created
-   - 2. Running
-   - 3. Paused
-   - 4. Exited
-   - 5. Dead
+   - Created
+   - Running
+   - Paused
+   - Exited
+   - Dead
 
 3. **Container States in Detail**
-   - 1. Created
-   - 2. Started/Running
-   - 3. Killed/Exited
-   - 4. Paused
-   - 5. Deleted
-   - 6. Dead
+   - Created
+   - Started/Running
+   - Killed/Exited
+   - Paused
+   - Deleted
+   - Dead
 
 4. **Docker Commands Associated with the Container Lifecycle**
 
-   - 1. **Image Lifecycle**
-     - 1. Build an Image
-     - 2. List Images
-     - 3. Remove an Image
+   - **Image Lifecycle**
+     - Build an Image
+     - List Images
+     - Remove an Image
 
-   - 2. **Container Creation**
-     - 1. Create a Container
-     - 2. Run a Container
+   - **Container Creation**
+     - Create a Container
+     - Run a Container
 
-   - 3. **Running Containers**
-     - 1. Start a Container
-     - 2. Stop a Container
-     - 3. Pause a Container
-     - 4. Unpause a Container
-     - 5. Restart a Container
+   - **Running Containers**
+     - Start a Container
+     - Stop a Container
+     - Pause a Container
+     - Unpause a Container
+     - Restart a Container
 
-   - 4. **Monitoring and Managing Containers**
-     - 1. List Running Containers
-     - 2. List All Containers
-     - 3. View Container Logs
-     - 4. Inspect a Container
+   - **Monitoring and Managing Containers**
+     - List Running Containers
+     - List All Containers
+     - View Container Logs
+     - Inspect a Container
 
-   - 5. **Interacting with Containers**
-     - 1. Execute a Command in a Running Container
-     - 2. Attach to a Running Container
+   - **Interacting with Containers**
+     - Execute a Command in a Running Container
+     - Attach to a Running Container
 
-   - 6. **Stopping and Removing Containers**
-     - 1. Stop and Remove a Container
-     - 2. Remove a Container
+   - **Stopping and Removing Containers**
+     - Stop and Remove a Container
+     - Remove a Container
 
-   - 7. **Container Cleanup**
-     - 1. Remove Unused Containers
-     - 2. Remove Unused Images
-     - 3. Remove Unused Networks
-     - 4. Remove Unused Volumes
+   - **Container Cleanup**
+     - Remove Unused Containers
+     - Remove Unused Images
+     - Remove Unused Networks
+     - Remove Unused Volumes
 
-   - 8. **System Maintenance**
-     - 1. Clean Up System
+   - **System Maintenance**
+     - Clean Up System
 
 
 
