@@ -92,5 +92,17 @@
     - Running a Docker Container
     - Pushing Docker Image to DockerHub
 
+## 2: Docker Engine
+**Docker Engine**
+**Docker Engine Architecture**
+  - Docker Daemon
+  - Containerd
+  - Runc
+  - Containerd-shim
+  - Docker API
+  - Docker CLI
+**Some Confusion may occur**
+  - Low-Level Runtime
+  - High-Level Runtime
 
 
