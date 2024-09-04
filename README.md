@@ -197,6 +197,66 @@
 
 8. **Explanation of the Access Logs**
 
+## 5.Docker Lifecycle
+1. **Docker Lifecycle**
+
+2. **Summary of these states before we deep dive into it**
+   - 1. Created
+   - 2. Running
+   - 3. Paused
+   - 4. Exited
+   - 5. Dead
+
+3. **Container States in Detail**
+   - 1. Created
+   - 2. Started/Running
+   - 3. Killed/Exited
+   - 4. Paused
+   - 5. Deleted
+   - 6. Dead
+
+4. **Docker Commands Associated with the Container Lifecycle**
+
+- 1. Image Lifecycle
+    - Build an Image
+    - List Images
+    - Remove an Image
+
+- 2. Container Creation
+    - Create a Container
+    - Run a Container
+
+- 3. Running Containers
+    - Start a Container
+    - Stop a Container
+    - Pause a Container
+    - Unpause a Container
+    - Restart a Container
+
+- 4. Monitoring and Managing Containers
+    - List Running Containers
+    - List All Containers
+    - View Container Logs
+    - Inspect a Container
+
+- 5. Interacting with Containers
+    - Execute a Command in a Running Container
+    - Attach to a Running Container
+
+- 6. Stopping and Removing Containers
+    - Stop and Remove a Container
+    - Remove a Container
+
+- 7. Container Cleanup
+    - Remove Unused Containers
+    - Remove Unused Images
+    - Remove Unused Networks
+    - Remove Unused Volumes
+
+- 8. System Maintenance
+    - Clean Up System
+
+
 
 
 
