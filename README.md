@@ -344,6 +344,65 @@
    - 6.Overlay Network
    - 7.None
 
+## 9: Docker Compose
+
+1. **Lifecycle of a Docker Compose Application**
+   - 1.Define the Application
+   - 2.Build or Pull Images
+   - 3.Start the Application
+   - 4.Containers Run
+   - 5.Monitor the Application
+   - 6.Scale the Application
+   - 7.Stop the Application
+
+2. **Benefits of Docker Compose**
+   - 1.Single host deployment
+   - 2.Quick and easy configuration
+   - 3.High productivity
+   - 4.Security
+
+3. **Installing Docker Compose**
+
+   - 1.Install Docker Compose
+       - From Windows
+       - From GitHub
+       - Using PIP
+
+   - 2.Create Docker Compose File at Any Location on Your System
+       - Create and Edit a Docker Compose File
+       - Navigate to the New Directory
+       - Create a Docker Compose YAML File
+       - Edit the Docker Compose YAML File
+       - View the Content of the Docker Compose YAML File
+       
+   - 3.Check the Validity of File by Command
+       - Validate and View Docker Compose Configuration
+       
+   - 4.Run the Docker Compose YAML File in Detached Mode
+       - Start Docker Compose Services in Detached Mode
+       - Now Check the List of Containers in Docker
+       
+   - 5.Bring Down Application by Command
+       - Stop and Remove Docker Compose Services
+
+4. **Expose Host Machine Port to Web Server Port**
+   - 1.Edit the Docker Compose File
+   - 2.Validate and View Docker Compose Configuration
+   - 3.Start Docker Compose Services in Detached Mode
+   - 4.Now Check the List of Containers in Docker
+   - 5.Now Go to Your Localhost:8081 or 127.0.0.1:8081
+   - 6.Stop and Remove Docker Compose Services
+   - 7.Now Check the List of Containers in Docker
+
+5. **Scale Services with Docker Compose**
+   - 1.Define and Run Multi-Container Applications
+   - 2.Scale the Database Service
+   - 3.View the Running Containers
+   - 4.Stop and Remove Containers
+   - 5.Verify All Containers Are Stopped
+
+6. **Summary**
+
 
 
 
