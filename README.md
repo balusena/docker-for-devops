@@ -256,6 +256,31 @@
    - **System Maintenance**
      - Clean Up System
 
+## 6: Docker Registry
+
+1. **What Is a Docker Registry?**
+
+2. **Why Docker Registries Are Useful**
+
+3. **How Does a Docker Registry Work?**
+
+4. **What Types of Docker Registries Are Out There?**
+   - DockerHub
+   - Amazon Elastic Container Registry (ECR)
+   - Azure Container Registry (ACR)
+   - Google Artifact Registry (GAR)
+   - GitHub Package Registry
+   - Red Hat Quay
+   - Docker Registry (with a capital R)
+
+5. **Docker Registries: The Public, Private, and Trusted**
+   - The Docker Public Registry
+   - The Docker Private Registry
+   - The Docker Trusted Registry (DTR)
+
+6. **Summary**
+
+
 
 
 
