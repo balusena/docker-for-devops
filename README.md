@@ -329,6 +329,22 @@
    - Named Volumes (also known as Managed Volumes)
    - Host Volumes (also known as Bind Mounts)
 
+## 8: Docker Networking
+
+1. **Docker Networking**
+
+2. **Container Network Model (CNM)**
+
+3. **Network Drivers/Types**
+   - 1.Default Bridge
+   - 2.User-defined Bridge
+   - 3.MACVLAN
+   - 4.IPVLAN (L2)
+   - 5.IPVLAN (L3)
+   - 6.Overlay Network
+   - 7.None
+
+
 
 
 
