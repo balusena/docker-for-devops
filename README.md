@@ -106,5 +106,40 @@
 3. **Some Confusion may occur**
    - Low-Level Runtime
    - High-Level Runtime
+   
+## 3: Docker Images
+1. **Docker Images**
+   - Docker Image Layer
+
+2. **Docker Layer Caching (DLC)**
+   - Running DockerFile first time for building docker image
+   - Running DockerFile second time for building docker image
+   - Running DockerFile with no-cache option
+
+3. **Docker Image Size**
+
+4. **An Example of a docker image**
+
+5. **Docker Image basics command**
+   - To get the list of all images in our system
+   - To pull an image from dockerhub registry or repository
+   - To use docker images help
+   - To get only image ids
+   - To filter an image based on condition    
+   - To create a docker container from a docker image
+   - To provide name to the container
+   - To access a running docker container
+   - To delete docker images
+   - To inspect docker image
+ 
+6. **Essential operations associated with Docker Images for effective operations in both development and production environments**
+   - Pulling
+   - Building
+   - Listing
+   - Running
+   - Inspecting
+   - Tagging
+   - Managing
+
 
 
