@@ -93,16 +93,18 @@
     - Pushing Docker Image to DockerHub
 
 ## 2: Docker Engine
-**Docker Engine**
-**Docker Engine Architecture**
-  - Docker Daemon
-  - Containerd
-  - Runc
-  - Containerd-shim
-  - Docker API
-  - Docker CLI
-**Some Confusion may occur**
-  - Low-Level Runtime
-  - High-Level Runtime
+1. **Docker Engine**
+
+2. **Docker Engine Architecture**
+   - Docker Daemon
+   - Containerd
+   - Runc
+   - Containerd-shim
+   - Docker API
+   - Docker CLI
+  
+3. **Some Confusion may occur**
+   - Low-Level Runtime
+   - High-Level Runtime
 
 
