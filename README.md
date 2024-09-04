@@ -140,6 +140,63 @@
    - Inspecting
    - Tagging
    - Managing
+   
+## 4: Dockerfile
+1. **Dockerfile**
+
+2. **What is a Dockerfile?**
+
+3. **Dockerfile Commands Explained**
+   - `FROM`
+   - `LABEL`
+   - `ENV`
+   - `ARG`
+   - `WORKDIR`
+   - `COPY`
+   - `RUN`
+   - `ADD`
+   - `EXPOSE`
+   - `VOLUME`
+   - `USER`
+   - `ONBUILD`
+   - `STOPSIGNAL`
+   - `HEALTHCHECK`
+   - `SHELL`
+   - `CMD`
+   - `ENTRYPOINT`
+   - `LABEL (additional)`
+
+4. **Benefits of Using a Dockerfile**
+   - Faster Deployments
+   - Automation Testing
+   - Quick CI/CD Integration
+
+5. **Example Dockerfile**
+   - Building the Docker Image
+   - Running the Docker Container
+   - Accessing the Application
+
+6. **Checking Container Status**
+   - List Running Containers
+   - Inspect the Container
+   - View Container Logs
+
+7. **Key Fields Explained**
+   - `Id`
+   - `Created`
+   - `Path`
+   - `Args`
+   - `State`
+   - `Image`
+   - `ResolvConfPath`, `HostnamePath`, `HostsPath`
+   - `LogPath`
+   - `Name`
+   - `Mounts`
+   - `Config`
+   - `NetworkSettings`
+
+8. **Explanation of the Access Logs**
+
 
 
 
