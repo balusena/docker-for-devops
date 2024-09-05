@@ -415,7 +415,7 @@ the knowledge to leverage Docker for efficient, scalable, and reliable software 
 
 ## Liking the Project?
 
-If you find this project helpful, please consider giving it a ⭐! It helps others discover the project and keeps us motivated to improve it.
+If you find this project helpful, please consider giving it a ⭐! It helps others discover the project and keeps me motivated to improve it.
 
 Thank you for your support!
 
