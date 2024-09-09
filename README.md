@@ -1,4 +1,4 @@
-# docker-for-devops
+# Docker For Devops
 
 ![Docker](https://github.com/balusena/docker-for-devops/blob/main/docker.png)
 
