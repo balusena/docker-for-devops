@@ -1,6 +1,6 @@
 # docker-for-devops
 
-![Docker]()
+![Docker](https://github.com/balusena/docker-for-devops/blob/main/docker.png)
 
 Docker has revolutionized the way we approach software development and deployment by providing a robust platform for 
 containerization. This guide offers a comprehensive overview of Docker's capabilities and its critical role in modern 
