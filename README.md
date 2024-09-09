@@ -1,4 +1,7 @@
-# docker-for-devops:
+# docker-for-devops
+
+![Docker]()
+
 Docker has revolutionized the way we approach software development and deployment by providing a robust platform for 
 containerization. This guide offers a comprehensive overview of Docker's capabilities and its critical role in modern 
 DevOps practices. We will start with an introduction to Docker, exploring its architecture and why it’s indispensable 
